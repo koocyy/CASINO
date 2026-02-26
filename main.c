@@ -51,11 +51,11 @@ void ruleta(int *penize) {
 
     printf("VITEJ V RULETE\n");
 
-    do {
+    while (hrat == 1) {
         printf("\nMas %d kreditu\n", *penize);
         printf("Kolik chces vsadit?: ");
         scanf("%d", &sazka);
-        if (sazka > penize) {
+        if (sazka > *penize) {
             printf("Nemas dost penez!\n");
             continue;
         }
@@ -71,7 +71,7 @@ void ruleta(int *penize) {
 
             if (tipr1 == padlo) {
                 printf("VYHRA!!!\n");
-                penize = penize + sazka * 50;
+                *penize += sazka * 50;
             } else {
                 printf("Prohral jsi.\n");
                 penize - sazka;
@@ -82,19 +82,20 @@ void ruleta(int *penize) {
             scanf("%d",&tipr2);
             printf("\n");
             barva = rand() % 2+1;
+            printf("%d",barva);
 
             if (tipr2 == barva) {
                 printf("VYHRA!!!\n");
-                penize = penize + sazka * 2;
+                *penize += sazka * 2;
             } else {
                printf("Prohral jsi.\n");
-               penize = penize - sazka;
+               *penize -= sazka;
             }
         }
-        printf("\nMas %d kreditu\n", penize);
+        printf("\nMas %d kreditu\n", *penize);
         printf("Chces hrat znovu? (1 = ano, 0 = ne): \n");
         scanf("%d", &hrat);
-    } ;
+    };
 }
 
 
@@ -109,11 +110,8 @@ scanf("%d",&gamble);
 switch (gamble){
 case 1:automat(&penize);printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);system("cls");break;
 case 2:ruleta(&penize);printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);system("cls");break;
-
-
-    printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);
-break;}
 }
+    printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);
     printf("Chces se vratit do menu? (1 = ano, 0 = ne): \n");
     scanf("%d", &menu);
 }while(menu == 1);
