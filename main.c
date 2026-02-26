@@ -4,6 +4,7 @@
 #include<windows.h>
 /* KURIHO CASINO (a kocyho) */
 
+/* funkce pro nas automat */
 void automat(int *penize) {
     int sazka,v,a,r,hrat=1;
     while (hrat == 1) {
@@ -44,26 +45,14 @@ void automat(int *penize) {
     }
 }
 
-/* zkouska */
-
-
-int main() {
-srand(time(NULL));
-int gamble,menu,penize=1000;
-do{
-printf("VITEJ V KURIHO A TONDOVEM CASINE!!!\n\n");
-printf("VYBER SI: AUTOMAT-1\n\t  RULETA-2\n");
-scanf("%d",&gamble);
-
-switch (gamble){
-case 1:automat(&penize);printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);system("cls");break;
-case 2:{
+/* funkce pro ruletu */
+void ruleta(int *penize) {
     int sazka,padlo,tipr1,hrat,hra,barva,tipr2;
 
-    printf("vitej");
+    printf("VITEJ V RULETE\n");
 
     do {
-        printf("\nMas %d kreditu\n", penize);
+        printf("\nMas %d kreditu\n", *penize);
         printf("Kolik chces vsadit?: ");
         scanf("%d", &sazka);
         if (sazka > penize) {
@@ -85,7 +74,7 @@ case 2:{
                 penize = penize + sazka * 50;
             } else {
                 printf("Prohral jsi.\n");
-                penize = penize - sazka;
+                penize - sazka;
             }
         }
         else {
@@ -105,7 +94,22 @@ case 2:{
         printf("\nMas %d kreditu\n", penize);
         printf("Chces hrat znovu? (1 = ano, 0 = ne): \n");
         scanf("%d", &hrat);
-    } while (hrat == 1 && penize > 0);
+    } ;
+}
+
+
+int main() {
+srand(time(NULL));
+int gamble,menu,penize=1000;
+do{
+printf("VITEJ V KURIHO A TONDOVEM CASINE!!!\n\n");
+printf("VYBER SI: AUTOMAT-1\n\t  RULETA-2\n");
+scanf("%d",&gamble);
+
+switch (gamble){
+case 1:automat(&penize);printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);system("cls");break;
+case 2:ruleta(&penize);printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);system("cls");break;
+
 
     printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);
 break;}
