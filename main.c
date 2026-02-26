@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include<windows.h>
-/* KURIHO CASINO */
+/* KURIHO CASINO (a kocyho) */
 
 void automat(int *penize) {
     int sazka,v,a,r,hrat=1;
@@ -44,7 +44,7 @@ void automat(int *penize) {
     }
 }
 
-
+/* zkouska */
 
 
 int main() {
