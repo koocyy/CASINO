@@ -58,31 +58,26 @@ scanf("%d",&gamble);
 switch (gamble){
 case 1:automat(&penize);printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);system("cls");break;
 case 2:{
-    int sazka,padlo,tipr1,hrat,hra,barva,tipr2,cisla,cervena,cerna;
+    int sazka,padlo,tipr1,hrat,hra,barva,tipr2;
 
     printf("vitej");
 
     do {
-            printf("\nMas %d kreditu\n", penize);
-
-            printf("Kolik chces vsadit?: ");
-            scanf("%d", &sazka);
-
-            if (sazka > penize) {
-                printf("Nemas dost penez!\n");
+        printf("\nMas %d kreditu\n", penize);
+        printf("Kolik chces vsadit?: ");
+        scanf("%d", &sazka);
+        if (sazka > penize) {
+            printf("Nemas dost penez!\n");
             continue;
-            }
-            printf("chces barvy-1 nebo cisla-0?\n");
-            scanf("%d",&hra);
+        }
+        printf("chces barvy-1 nebo cisla-0?\n");
+        scanf("%d",&hra);
 
-        if (hra==0)
-        {
+        if (hra==0) {
             printf("Tipni si cislo (0-36): ");
-              scanf("%d", &tipr1);
-              printf("\n");
-
-               padlo = rand() % 37;
-
+            scanf("%d", &tipr1);
+            printf("\n");
+            padlo = rand() % 37;
             printf("Padlo cislo: %d\n", padlo);
 
             if (tipr1 == padlo) {
@@ -90,18 +85,14 @@ case 2:{
                 penize = penize + sazka * 50;
             } else {
                 printf("Prohral jsi.\n");
-               penize = penize - sazka;
-           }
+                penize = penize - sazka;
+            }
         }
-        else
-        {
-                printf("cervenu-1 nebo cernou-2?\n");
-                scanf("%d",&tipr2);
-                printf("\n");
-
+        else {
+            printf("cervenu-1 nebo cernou-2?\n");
+            scanf("%d",&tipr2);
+            printf("\n");
             barva = rand() % 2+1;
-            cervena=1;
-            cerna=2;
 
             if (tipr2 == barva) {
                 printf("VYHRA!!!\n");
@@ -111,17 +102,16 @@ case 2:{
                penize = penize - sazka;
             }
         }
-            printf("\nMas %d kreditu\n", penize);
-            printf("Chces hrat znovu? (1 = ano, 0 = ne): \n");
-            scanf("%d", &hrat);
-
+        printf("\nMas %d kreditu\n", penize);
+        printf("Chces hrat znovu? (1 = ano, 0 = ne): \n");
+        scanf("%d", &hrat);
     } while (hrat == 1 && penize > 0);
 
     printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);
 break;}
 }
-     printf("Chces se vratit do menu? (1 = ano, 0 = ne): \n");
-     scanf("%d", &menu);
+    printf("Chces se vratit do menu? (1 = ano, 0 = ne): \n");
+    scanf("%d", &menu);
 }while(menu == 1);
 return 0;
 }
