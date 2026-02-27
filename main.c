@@ -3,9 +3,17 @@
 #include <time.h>
 #include<windows.h>
 /* KURIHO CASINO (a kocyho) */
-// int dalsiCislo(int akt_cislo) {
-//     int ruletaCISLA[] = [];
-// }
+int dalsiCislo(int *akt_cislo) {
+    if (*akt_cislo == 35) {
+        *akt_cislo = 0;
+        return *akt_cislo;
+    }
+    else {
+        *akt_cislo += 1;
+        return *akt_cislo;
+
+    }
+}
 /* funkce pro zmenu viditelnosti kurzoru v consoli */
 void hideCursor() {
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -116,19 +124,34 @@ void ruleta(int *penize) {
             system("cls");
             printf("Vyber si cislo od 0 do 36: ");
             scanf("%d", &tipr);
+            int a=0,b=1,c=2,d=3,e=4,f=5,g=6,h=7,i2=8,j=9,k=10,l=11,m=12,n=13,o=14,p=15,q=16,r=17,s=18,t=19,u=20,v=21,w=22,x=23,y=24,z=25,a1=26,b1=27,c1=28,d1=29,e1=30,f1=31,g1=32,h1=33,i1=34,j1=35;
             padlo = rand() % 37;
-            system("cls");
-            printf("              v\n");
-            printf("         |%02d|%02d|%02d|\n",rand() % 37,rand() % 37,rand() % 37);
-            printf("      |%02d|    ^   |%02d|\n",rand() % 37,rand() % 37);
-            printf("   |%02d|              |%02d|\n",rand() % 37,rand() % 37);
-            printf("|%02d|        [###]       |%02d|\n",rand() % 37,rand() % 37);
-            printf("|%02d|       [# 0 #]      |%02d|\n",rand() % 37,rand() % 37);
-            printf("|%02d|        [###]       |%02d|\n",rand() % 37,rand() % 37);
-            printf("   |%02d|              |%02d|\n",rand() % 37,rand() % 37);
-            printf("      |%02d|        |%02d|\n",rand() % 37,rand() % 37);
-            printf("         |%02d|%02d|%02d|\n",rand() % 37,rand() % 37,rand() % 37);
-
+            int kolo[36] = {
+                0, 32, 15, 19, 4, 21, 2, 25, 17,
+                34, 6, 27, 13, 11, 30, 8, 23,
+                10, 5, 24, 16, 33, 1, 20, 14, 31,
+                9, 22, 18, 29, 7, 28, 12, 35, 3, 26
+            };
+            hideCursor();
+            for (int i = 0; i < 37; i++) {
+                system("cls");
+                printf("                   v\n");
+                printf("         |%02d|%02d|%02d|%02d|%02d|%02d|%02d|\n",kolo[dalsiCislo(&a)],kolo[dalsiCislo(&j1)],kolo[dalsiCislo(&i1)],kolo[dalsiCislo(&h1)],kolo[dalsiCislo(&g1)],kolo[dalsiCislo(&f1)],kolo[dalsiCislo(&e1)]);
+                printf("      |%02d|         ^          |%02d|\n",kolo[dalsiCislo(&b)],kolo[dalsiCislo(&d1)]);
+                printf("   |%02d|                          |%02d|\n",kolo[dalsiCislo(&c)],kolo[dalsiCislo(&c1)]);
+                printf("|%02d|                                |%02d|\n",kolo[dalsiCislo(&d)],kolo[dalsiCislo(&b1)]);
+                printf("|%02d|                                |%02d|\n",kolo[dalsiCislo(&e)],kolo[dalsiCislo(&a1)]);
+                printf("|%02d|             [###]              |%02d|\n",kolo[dalsiCislo(&f)],kolo[dalsiCislo(&z)]);
+                printf("|%02d|            [# 0 #]             |%02d|\n",kolo[dalsiCislo(&g)],kolo[dalsiCislo(&y)]);
+                printf("|%02d|             [###]              |%02d|\n",kolo[dalsiCislo(&h)],kolo[dalsiCislo(&x)]);
+                printf("|%02d|                                |%02d|\n",kolo[dalsiCislo(&i2)],kolo[dalsiCislo(&w)]);
+                printf("|%02d|                                |%02d|\n",kolo[dalsiCislo(&j)],kolo[dalsiCislo(&v)]);
+                printf("   |%02d|                          |%02d|\n",kolo[dalsiCislo(&k)],kolo[dalsiCislo(&u)]);
+                printf("      |%02d|                    |%02d|\n",kolo[dalsiCislo(&l)],kolo[dalsiCislo(&t)]);
+                printf("         |%02d|%02d|%02d|%02d|%02d|%02d|%02d|\n",kolo[dalsiCislo(&m)],kolo[dalsiCislo(&n)],kolo[dalsiCislo(&o)],kolo[dalsiCislo(&p)],kolo[dalsiCislo(&q)],kolo[dalsiCislo(&r)],kolo[dalsiCislo(&s)]);
+                Sleep(1000);
+            }
+            showCursor();
             if (tipr == padlo) {
                 printf("VYHRA!!!\n");
                 Sleep(1500);
