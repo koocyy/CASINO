@@ -92,7 +92,7 @@ void ruleta(int *penize) {
             } else {
                 printf("Prohral jsi.\n");
                 Sleep(1500);
-                penize - sazka;
+                *penize -= sazka;
             }
         }
         else if (hra == 1) {
