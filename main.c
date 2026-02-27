@@ -23,6 +23,9 @@ void automat(int *penize) {
         v = rand() % 9 + 1;
         a = rand() % 9 + 1;
         r = rand() % 9 + 1;
+
+        /* animace cisel */
+
         for (int i = 0; i < 250; i++) {
             system("cls");
             printf("\n[-%d-][-%d-][-%d-]\n", rand() % 9 + 1, rand() % 9 + 1, rand() % 9 + 1);
@@ -37,6 +40,8 @@ void automat(int *penize) {
         }
         system("cls");
         printf("\n[-%d-][-%d-][-%d-]\n", v, a, r);
+
+
         if (v == a && a == r) {
             printf("\nVYHRA!!!\n");
             Sleep(1500);
