@@ -3,6 +3,26 @@
 #include <time.h>
 #include<windows.h>
 /* KURIHO CASINO (a kocyho) */
+// int dalsiCislo(int akt_cislo) {
+//     int ruletaCISLA[] = [];
+// }
+/* funkce pro zmenu viditelnosti kurzoru v consoli */
+void hideCursor() {
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_CURSOR_INFO cursorInfo;
+
+    GetConsoleCursorInfo(hConsole, &cursorInfo);
+    cursorInfo.bVisible = FALSE;  // hide cursor
+    SetConsoleCursorInfo(hConsole, &cursorInfo);
+}
+void showCursor() {
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_CURSOR_INFO cursorInfo;
+
+    GetConsoleCursorInfo(hConsole, &cursorInfo);
+    cursorInfo.bVisible = TRUE;   // show cursor
+    SetConsoleCursorInfo(hConsole, &cursorInfo);
+}
 
 /* funkce pro nas automat */
 void automat(int *penize) {
@@ -25,21 +45,30 @@ void automat(int *penize) {
         r = rand() % 9 + 1;
 
         /* animace cisel */
-
+        hideCursor();
         for (int i = 0; i < 250; i++) {
             system("cls");
+            printf(" -------------");
             printf("\n[-%d-][-%d-][-%d-]\n", rand() % 9 + 1, rand() % 9 + 1, rand() % 9 + 1);
+            printf(" -------------");
         }
         for (int i = 0; i < 250; i++) {
             system("cls");
+            printf(" -|-----------");
             printf("\n[-%d-][-%d-][-%d-]\n", v, rand() % 9 + 1, rand() % 9 + 1);
+            printf(" -|-----------");
         }
         for (int i = 0; i < 250; i++) {
             system("cls");
+            printf(" -|----|------");
             printf("\n[-%d-][-%d-][-%d-]\n", v, a, rand() % 9 + 1);
+            printf(" -|----|------");
         }
         system("cls");
+        printf(" -|----|----|-");
         printf("\n[-%d-][-%d-][-%d-]\n", v, a, r);
+        printf(" -|----|----|-");
+        showCursor();
 
 
         if (v == a && a == r) {
@@ -88,7 +117,17 @@ void ruleta(int *penize) {
             printf("Vyber si cislo od 0 do 36: ");
             scanf("%d", &tipr);
             padlo = rand() % 37;
-            printf("\nPadlo cislo: %d\n", padlo);
+            system("cls");
+            printf("              v\n");
+            printf("         |%02d|%02d|%02d|\n",rand() % 37,rand() % 37,rand() % 37);
+            printf("      |%02d|    ^   |%02d|\n",rand() % 37,rand() % 37);
+            printf("   |%02d|              |%02d|\n",rand() % 37,rand() % 37);
+            printf("|%02d|        [###]       |%02d|\n",rand() % 37,rand() % 37);
+            printf("|%02d|       [# 0 #]      |%02d|\n",rand() % 37,rand() % 37);
+            printf("|%02d|        [###]       |%02d|\n",rand() % 37,rand() % 37);
+            printf("   |%02d|              |%02d|\n",rand() % 37,rand() % 37);
+            printf("      |%02d|        |%02d|\n",rand() % 37,rand() % 37);
+            printf("         |%02d|%02d|%02d|\n",rand() % 37,rand() % 37,rand() % 37);
 
             if (tipr == padlo) {
                 printf("VYHRA!!!\n");
