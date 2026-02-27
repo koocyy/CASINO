@@ -87,10 +87,15 @@ void automat(int *penize) {
 
 
         if (v == a && a == r) {
-            printf("\nVYHRA!!!\n");
+            printf("\nJACKPOT!!!\n");
             Sleep(1500);
             *penize += sazka * 20;
-        } else {
+        } else if (v == a || a == r) {
+                printf("\nJACKPOT!!!\n");
+                Sleep(1500);
+               *penize += sazka * 3;
+               }
+            else {
             printf("\nProhral jsi.\n");
             Sleep(1500);
             *penize -= sazka;
@@ -259,9 +264,10 @@ int main() {
 srand(time(NULL));
 int gamble,menu,penize=1000;
 do{
-printf("VITEJ V KURIHO A TONDOVEM CASINE!!!\n\n");
-printf("VYBER SI: AUTOMAT-1\n\t  RULETA-2\n\t  BLACKJACK-3\n");
-scanf("%d",&gamble);
+    system("cls");
+    printf("VITEJ V KURIHO A TONDOVEM CASINE!!!\n\n");
+    printf("VYBER SI: AUTOMAT-1\n\t  RULETA-2\n\t  BLACKJACK-3\n");
+    scanf("%d",&gamble);
 
 switch (gamble){
         case 1:automat(&penize);printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);system("cls");break;
