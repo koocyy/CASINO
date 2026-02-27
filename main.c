@@ -105,6 +105,12 @@ void ruleta(int *penize) {
             Sleep(1500);
             continue;
         }
+        if (*penize <= 0) {
+            system("cls");
+            printf("Dosly ti penize! Restart na 1000 kreditu.\n");
+            *penize = 1000;
+            Sleep(2000);
+        }
         printf("\nMas %d kreditu\n", *penize);
         printf("Chces hrat znovu? (1 = ano, 0 = ne): \n");
         scanf("%d", &hrat);
