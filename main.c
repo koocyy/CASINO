@@ -196,6 +196,55 @@ void ruleta(int *penize) {
         scanf("%d", &hrat);
     };
 }
+/* funkce pro niga petr */
+void blackjack(int *penize) {
+    int vzit,hrat=1,sazka,karta,dalsi;
+
+    while (hrat==1){
+        int dohromady=0,ddohromady=0;
+        system("cls");
+        printf("VITEJ V BLACKJACKU\n");
+        printf("\nMas %d kreditu\n", *penize);
+        printf("Kolik chces vsadit?: ");
+        scanf("%d", &sazka);
+        if (sazka > *penize||sazka<= 0) {
+            system("cls");
+            printf("Neplatna sazka!\n");
+            Sleep(1500);
+            goto exit;
+        }
+       do {
+           karta=rand() % 10+1;
+           dohromady+=karta;
+           system("cls");
+           printf("Dostals %d, dohromady mas: %d\n",karta,dohromady);
+           printf("Chces si vzit dalsi kartu? 1-ano 0-ne\n");
+           scanf("%d",&dalsi);
+       }while (dalsi==1&&dohromady<21);
+        if (dohromady>21) {
+            goto prohra;
+        }
+        else {
+            do {
+                karta=rand() % 10+1;
+                ddohromady+=karta;
+                system("cls");
+                printf("Dealer dostal %d, dohromady ma: %d\n",karta,ddohromady);
+                Sleep(1500);
+            }while (ddohromady<19);
+        }
+        if (ddohromady>21||dohromady>ddohromady) {
+           printf("VYHRAL JSI");
+            Sleep(1500);
+            *penize += sazka * 2;
+        }
+        else
+        prohra: printf("Mas moc, PROHRAL JSI\n");
+        Sleep(2000);
+        exit:
+    }
+}
+
 
 
 int main() {
@@ -203,12 +252,13 @@ srand(time(NULL));
 int gamble,menu,penize=1000;
 do{
 printf("VITEJ V KURIHO A TONDOVEM CASINE!!!\n\n");
-printf("VYBER SI: AUTOMAT-1\n\t  RULETA-2\n");
+printf("VYBER SI: AUTOMAT-1\n\t  RULETA-2\n\t  BLACKJACK-3\n");
 scanf("%d",&gamble);
 
 switch (gamble){
-case 1:automat(&penize);printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);system("cls");break;
-case 2:ruleta(&penize);printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);system("cls");break;
+        case 1:automat(&penize);printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);system("cls");break;
+        case 2:ruleta(&penize);printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);system("cls");break;
+        case 3: blackjack(&penize);printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);system("cls");break;
 }
     printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);
     printf("Chces se vratit do menu? (1 = ano, 0 = ne): \n");
