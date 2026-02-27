@@ -60,7 +60,7 @@ void automat(int *penize) {
 
 /* funkce pro ruletu */
 void ruleta(int *penize) {
-    int sazka,padlo,tipr,hrat,hra,barva;
+    int sazka,padlo,tipr,hrat=1,hra,barva;
 
     while (hrat == 1) {
         system("cls");
@@ -92,7 +92,7 @@ void ruleta(int *penize) {
             } else {
                 printf("Prohral jsi.\n");
                 Sleep(1500);
-                penize - sazka;
+                *penize -= sazka;
             }
         }
         else if (hra == 1) {
