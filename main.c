@@ -96,6 +96,7 @@ void ruleta(int *penize) {
             }
         }
         else if (hra == 1) {
+            system("cls");
             printf("Sazis na cervenou (1) nebo cernou (2)?\n");
             scanf("%d",&tipr);
             printf("\n");
