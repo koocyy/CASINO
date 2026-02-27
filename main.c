@@ -15,6 +15,7 @@ void automat(int *penize) {
         scanf("%d", &sazka);
 
         if (sazka > *penize || sazka <= 0) {
+            system("cls");
             printf("Neplatna sazka!\n");
             Sleep(1500);
             continue;
@@ -47,50 +48,62 @@ void automat(int *penize) {
 
 /* funkce pro ruletu */
 void ruleta(int *penize) {
-    int sazka,padlo,tipr1,hrat,hra,barva,tipr2;
-
-    printf("VITEJ V RULETE\n");
+    int sazka,padlo,tipr,hrat,hra,barva;
 
     while (hrat == 1) {
+        system("cls");
+        printf("VITEJ V RULETE\n");
         printf("\nMas %d kreditu\n", *penize);
         printf("Kolik chces vsadit?: ");
         scanf("%d", &sazka);
-        if (sazka > *penize) {
-            printf("Nemas dost penez!\n");
+        if (sazka > *penize || sazka <= 0) {
+            system("cls");
+            printf("Neplatna sazka!\n");
+            Sleep(1500);
             continue;
         }
-        printf("chces barvy-1 nebo cisla-0?\n");
+        system("cls");
+        printf("Chces si vsadit na barvu (1) nebo cislo (0)?\n");
         scanf("%d",&hra);
 
         if (hra==0) {
-            printf("Tipni si cislo (0-36): ");
-            scanf("%d", &tipr1);
-            printf("\n");
+            system("cls");
+            printf("Vyber si cislo od 0 do 36: ");
+            scanf("%d", &tipr);
             padlo = rand() % 37;
-            printf("Padlo cislo: %d\n", padlo);
+            printf("\nPadlo cislo: %d\n", padlo);
 
-            if (tipr1 == padlo) {
+            if (tipr == padlo) {
                 printf("VYHRA!!!\n");
+                Sleep(1500);
                 *penize += sazka * 50;
             } else {
                 printf("Prohral jsi.\n");
+                Sleep(1500);
                 penize - sazka;
             }
         }
-        else {
-            printf("cervenu-1 nebo cernou-2?\n");
-            scanf("%d",&tipr2);
+        else if (hra == 1) {
+            printf("Sazis na cervenou (1) nebo cernou (2)?\n");
+            scanf("%d",&tipr);
             printf("\n");
             barva = rand() % 2+1;
-            printf("%d",barva);
 
-            if (tipr2 == barva) {
+            if (tipr == barva) {
                 printf("VYHRA!!!\n");
+                Sleep(1500);
                 *penize += sazka * 2;
             } else {
                printf("Prohral jsi.\n");
+                Sleep(1500);
                *penize -= sazka;
             }
+        }
+        else {
+            system("cls");
+            printf("Neplatny vyber.\n");
+            Sleep(1500);
+            continue;
         }
         printf("\nMas %d kreditu\n", *penize);
         printf("Chces hrat znovu? (1 = ano, 0 = ne): \n");
