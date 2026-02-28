@@ -16,13 +16,15 @@ int dalsiCislo(int *akt_cislo) {
 }
 
 int pocet_kol(int *Pkol) {
-    *Pkol = rand() % 101 + 400;
+    *Pkol = rand() % 101 + 50;
     return *Pkol;
 }
 
-char* fmtNum(int n, char *buf) {
+char* fmtNum(int n, char *buf,int tipr) {
     if (n == 0)
         sprintf(buf, "\033[92m%02d\033[0m", n);
+    else if (n == tipr)
+        sprintf(buf, "\033[1m\033[94m%02d\033[0m", n);
     else if (n==1||n==3||n==5||n==7||n==9||n==12||n==14||n==16||n==18||n==19||n==21||n==23||n==25||n==27||n==30||n==32||n==34||n==36)
         sprintf(buf, "\033[91m%02d\033[0m", n);
     else
@@ -142,7 +144,7 @@ void ruleta(int *penize) {
 
         if (hra==0) {
             system("cls");
-            printf("Vyber si cislo od 0 do 36: ");
+            printf("Vyber si cislo od 0 do 35: ");
             scanf("%d", &tipr);
             int a=0,b=1,c=2,d=3,e=4,f=5,g=6,h=7,i2=8,j=9,k=10,l=11,m=12,n=13,o=14,p=15,q=16,r=17,s=18,t=19,u=20,v=21,w=22,x=23,y=24,z=25,a1=26,b1=27,c1=28,d1=29,e1=30,f1=31,g1=32,h1=33,i1=34,j1=35;
             // padlo = rand() % 37;
@@ -159,28 +161,31 @@ void ruleta(int *penize) {
             for (int i = 0; i < Pkol+1; i++) {
                 system("cls");
                 printf("                  /^\\\n");
-                printf("         |%s|%s|%s|%s|%s|%s|%s|\n",fmtNum(kolo[dalsiCislo(&a)],buf1),fmtNum(kolo[dalsiCislo(&j1)],buf2),fmtNum(kolo[dalsiCislo(&i1)],buf3),fmtNum(kolo[dalsiCislo(&h1)],buf4),fmtNum(kolo[dalsiCislo(&g1)],buf5),fmtNum(kolo[dalsiCislo(&f1)],buf6),fmtNum(kolo[dalsiCislo(&e1)],buf7));
-                printf("      |%s|        \\v/          |%s|\n",fmtNum(kolo[dalsiCislo(&b)],buf8),fmtNum(kolo[dalsiCislo(&d1)],buf9));
-                printf("   |%s|            |             |%s|\n",fmtNum(kolo[dalsiCislo(&c)],buf10),fmtNum(kolo[dalsiCislo(&c1)],buf11));
-                printf("|%s|               |                |%s|\n",fmtNum(kolo[dalsiCislo(&d)],buf12),fmtNum(kolo[dalsiCislo(&b1)],buf13));
-                printf("|%s|               |                |%s|\n",fmtNum(kolo[dalsiCislo(&e)],buf14),fmtNum(kolo[dalsiCislo(&a1)],buf15));
-                printf("|%s|             [###]              |%s|\n",fmtNum(kolo[dalsiCislo(&f)],buf16),fmtNum(kolo[dalsiCislo(&z)],buf17));
-                printf("|%s|------------[# 0 #]-------------|%s|\n",fmtNum(kolo[dalsiCislo(&g)],buf18),fmtNum(kolo[dalsiCislo(&y)],buf19));
-                printf("|%s|             [###]              |%s|\n",fmtNum(kolo[dalsiCislo(&h)],buf20),fmtNum(kolo[dalsiCislo(&x)],buf21));
-                printf("|%s|               |                |%s|\n",fmtNum(kolo[dalsiCislo(&i2)],buf22),fmtNum(kolo[dalsiCislo(&w)],buf23));
-                printf("|%s|               |                |%s|\n",fmtNum(kolo[dalsiCislo(&j)],buf24),fmtNum(kolo[dalsiCislo(&v)],buf25));
-                printf("   |%s|            |             |%s|\n",fmtNum(kolo[dalsiCislo(&k)],buf26),fmtNum(kolo[dalsiCislo(&u)],buf27));
-                printf("      |%s|         |          |%s|\n",fmtNum(kolo[dalsiCislo(&l)],buf28),fmtNum(kolo[dalsiCislo(&t)],buf29));
-                printf("         |%s|%s|%s|%s|%s|%s|%s|\n",fmtNum(kolo[dalsiCislo(&m)],buf30),fmtNum(kolo[dalsiCislo(&n)],buf1),fmtNum(kolo[dalsiCislo(&o)],buf2),fmtNum(kolo[dalsiCislo(&p)],buf3),fmtNum(kolo[dalsiCislo(&q)],buf4),fmtNum(kolo[dalsiCislo(&r)],buf5),fmtNum(kolo[dalsiCislo(&s)],buf6));
-                printf("POCET KOL: %d\t\t\t%d",i,Pkol);
-                if (i>Pkol-35&&i>Pkol-17)
-                    Sleep(50);
-                else if (i>Pkol-17&&i>Pkol-7)
+                printf("         |%s|%s|%s|%s|%s|%s|%s|\n",fmtNum(kolo[dalsiCislo(&a)],buf1, tipr),fmtNum(kolo[dalsiCislo(&j1)],buf2, tipr),fmtNum(kolo[dalsiCislo(&i1)],buf3, tipr),fmtNum(kolo[dalsiCislo(&h1)],buf4, tipr),fmtNum(kolo[dalsiCislo(&g1)],buf5, tipr),fmtNum(kolo[dalsiCislo(&f1)],buf6, tipr),fmtNum(kolo[dalsiCislo(&e1)],buf7, tipr));
+                printf("      |%s|        \\v/          |%s|\n",fmtNum(kolo[dalsiCislo(&b)],buf8, tipr),fmtNum(kolo[dalsiCislo(&d1)],buf9, tipr));
+                printf("   |%s|            |             |%s|\n",fmtNum(kolo[dalsiCislo(&c)],buf10, tipr),fmtNum(kolo[dalsiCislo(&c1)],buf11, tipr));
+                printf("|%s|               |                |%s|\n",fmtNum(kolo[dalsiCislo(&d)],buf12, tipr),fmtNum(kolo[dalsiCislo(&b1)],buf13, tipr));
+                printf("|%s|               |                |%s|\n",fmtNum(kolo[dalsiCislo(&e)],buf14, tipr),fmtNum(kolo[dalsiCislo(&a1)],buf15, tipr));
+                printf("|%s|             [###]              |%s|\n",fmtNum(kolo[dalsiCislo(&f)],buf16, tipr),fmtNum(kolo[dalsiCislo(&z)],buf17, tipr));
+                printf("|%s|------------[# 0 #]-------------|%s|\n",fmtNum(kolo[dalsiCislo(&g)],buf18, tipr),fmtNum(kolo[dalsiCislo(&y)],buf19, tipr));
+                printf("|%s|             [###]              |%s|\n",fmtNum(kolo[dalsiCislo(&h)],buf20, tipr),fmtNum(kolo[dalsiCislo(&x)],buf21, tipr));
+                printf("|%s|               |                |%s|\n",fmtNum(kolo[dalsiCislo(&i2)],buf22, tipr),fmtNum(kolo[dalsiCislo(&w)],buf23, tipr));
+                printf("|%s|               |                |%s|\n",fmtNum(kolo[dalsiCislo(&j)],buf24, tipr),fmtNum(kolo[dalsiCislo(&v)],buf25, tipr));
+                printf("   |%s|            |             |%s|\n",fmtNum(kolo[dalsiCislo(&k)],buf26, tipr),fmtNum(kolo[dalsiCislo(&u)],buf27, tipr));
+                printf("      |%s|         |          |%s|\n",fmtNum(kolo[dalsiCislo(&l)],buf28, tipr),fmtNum(kolo[dalsiCislo(&t)],buf29, tipr));
+                printf("         |%s|%s|%s|%s|%s|%s|%s|\n",fmtNum(kolo[dalsiCislo(&m)],buf30, tipr),fmtNum(kolo[dalsiCislo(&n)],buf1, tipr),fmtNum(kolo[dalsiCislo(&o)],buf2, tipr),fmtNum(kolo[dalsiCislo(&p)],buf3, tipr),fmtNum(kolo[dalsiCislo(&q)],buf4, tipr),fmtNum(kolo[dalsiCislo(&r)],buf5, tipr),fmtNum(kolo[dalsiCislo(&s)],buf6, tipr));
+                if (i>Pkol-20&&i<Pkol-12) {
                     Sleep(100);
-                else if (i>Pkol-7)
-                    Sleep(1000);
-                else
+                }
+                else if (i>=Pkol-11&&i<Pkol-5){
+                    Sleep(170);
+                }
+                else if (i>=Pkol-5){
+                    Sleep(450);
+                }
+                else {
                     Sleep(10);
+                }
             }
 
             // to co padlo = kolo[i1-1]
