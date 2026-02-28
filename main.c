@@ -116,7 +116,7 @@ void automat(int *penize) {
 
 /* funkce pro ruletu */
 void ruleta(int *penize) {
-    int sazka,padlo,tipr,hrat=1,hra,barva;
+    int sazka,tipr,hrat=1,hra,barva;
 
     while (hrat == 1) {
         system("cls");
