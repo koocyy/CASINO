@@ -264,11 +264,37 @@ void blackjack(int *penize) {
         else
         prohra: printf("Mas moc, PROHRAL JSI\n");
         Sleep(2000);
+        *penize -= sazka;
         exit:
+        printf("Chces hrat znovu? (1 = ano, 0 = ne): \n");
+        scanf("%d", &hrat);
     }
 }
+/*funkce pro niga kolo*/
+/*
+void kolostesti(int *penize) {
+    int sazka,hrat=1;
+    while (hrat == 1) {
+        system("cls");
+        printf("VITEJ V KOLESTESTI\n");
+        printf("\nMas %d kreditu\n", *penize);
+        printf("Kolik chces vsadit?: ");
+        scanf("%d", &sazka);
+        if (sazka > *penize || sazka <= 0) {
+            system("cls");
+            printf("Neplatna sazka!\n");
+            Sleep(1500);
+            continue;
 
 
+
+
+
+
+
+      }
+}
+*/
 
 int main() {
 srand(time(NULL));
@@ -283,6 +309,7 @@ switch (gamble){
         case 1:automat(&penize);printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);system("cls");break;
         case 2:ruleta(&penize);printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);system("cls");break;
         case 3: blackjack(&penize);printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);system("cls");break;
+        case 4: ruleta(&penize);printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);system("cls");break;
 }
     printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);
     printf("Chces se vratit do menu? (1 = ano, 0 = ne): \n");
