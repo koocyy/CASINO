@@ -17,6 +17,8 @@ int dalsiCislo(int *akt_cislo) {
 char* fmtNum(int n, char *buf) {
     if (n == 0)
         sprintf(buf, "\033[92m%02d\033[0m", n);
+    else if (n==1||n==3||n==5||n==7||n==9||n==12||n==14||n==16||n==18||n==19||n==21||n==23||n==25||n==27||n==30||n==32||n==34||n==36)
+        sprintf(buf, "\033[91m%02d\033[0m", n);
     else
         sprintf(buf, "%02d", n);
     return buf;
@@ -137,7 +139,7 @@ void ruleta(int *penize) {
             printf("Vyber si cislo od 0 do 36: ");
             scanf("%d", &tipr);
             int a=0,b=1,c=2,d=3,e=4,f=5,g=6,h=7,i2=8,j=9,k=10,l=11,m=12,n=13,o=14,p=15,q=16,r=17,s=18,t=19,u=20,v=21,w=22,x=23,y=24,z=25,a1=26,b1=27,c1=28,d1=29,e1=30,f1=31,g1=32,h1=33,i1=34,j1=35;
-            padlo = rand() % 37;
+            // padlo = rand() % 37;
             int kolo[36] = {
                 0, 32, 15, 19, 4, 21, 2, 25, 17,
                 34, 6, 27, 13, 11, 30, 8, 23,
@@ -146,7 +148,7 @@ void ruleta(int *penize) {
             };
             hideCursor();
             char buf1[20],buf2[20],buf3[20],buf4[20],buf5[20],buf6[20],buf7[20],buf8[20],buf9[20],buf10[20],buf11[20],buf12[20],buf13[20],buf14[20],buf15[20],buf16[20],buf17[20],buf18[20],buf19[20],buf20[20],buf21[20],buf22[20],buf23[20],buf24[20],buf25[20],buf26[20],buf27[20],buf28[20],buf29[20],buf30[20];
-            for (int i = 0; i < 37; i++) {
+            for (int i = 0; i < rand() % 101 + 400; i++) {
                 system("cls");
                 printf("                   v\n");
                 printf("         |%s|%s|%s|%s|%s|%s|%s|\n",fmtNum(kolo[dalsiCislo(&a)],buf1),fmtNum(kolo[dalsiCislo(&j1)],buf2),fmtNum(kolo[dalsiCislo(&i1)],buf3),fmtNum(kolo[dalsiCislo(&h1)],buf4),fmtNum(kolo[dalsiCislo(&g1)],buf5),fmtNum(kolo[dalsiCislo(&f1)],buf6),fmtNum(kolo[dalsiCislo(&e1)],buf7));
@@ -162,10 +164,18 @@ void ruleta(int *penize) {
                 printf("   |%s|                          |%s|\n",fmtNum(kolo[dalsiCislo(&k)],buf26),fmtNum(kolo[dalsiCislo(&u)],buf27));
                 printf("      |%s|                    |%s|\n",fmtNum(kolo[dalsiCislo(&l)],buf28),fmtNum(kolo[dalsiCislo(&t)],buf29));
                 printf("         |%s|%s|%s|%s|%s|%s|%s|\n",fmtNum(kolo[dalsiCislo(&m)],buf30),fmtNum(kolo[dalsiCislo(&n)],buf1),fmtNum(kolo[dalsiCislo(&o)],buf2),fmtNum(kolo[dalsiCislo(&p)],buf3),fmtNum(kolo[dalsiCislo(&q)],buf4),fmtNum(kolo[dalsiCislo(&r)],buf5),fmtNum(kolo[dalsiCislo(&s)],buf6));
-                Sleep(200);
+                Sleep(10);
             }
+
+            // to co padlo = kolo[i1-1]
+
             showCursor();
-            if (tipr == padlo) {
+            if (tipr==kolo[i1-1]&&kolo[i1-1]==0) {
+                printf("SUPER VYHRA!!!\n");
+                Sleep(1500);
+                *penize += sazka * 100;
+            }
+            if (tipr == kolo[i1-1]) {
                 printf("VYHRA!!!\n");
                 Sleep(1500);
                 *penize += sazka * 50;
