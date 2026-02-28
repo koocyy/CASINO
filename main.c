@@ -243,7 +243,7 @@ void ruleta(int *penize) {
 }
 /* funkce pro niga petr */
 void blackjack(int *penize) {
-    int vzit,hrat=1,sazka,karta,dalsi;
+    int hrat=1,sazka,karta,dalsi;
 
     while (hrat==1){
         int dohromady=0,ddohromady=0;
@@ -322,6 +322,7 @@ int main() {
 srand(time(NULL));
 int gamble,menu,penize=1000;
 do{
+    start:
     system("cls");
     printf("VITEJ V KURIHO A TONDOVEM CASINE!!!\n\n");
     printf("VYBER SI: AUTOMAT-1\n\t  RULETA-2\n\t  BLACKJACK-3\n");
@@ -332,6 +333,7 @@ switch (gamble){
         case 2:ruleta(&penize);printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);system("cls");break;
         case 3:blackjack(&penize);printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);system("cls");break;
         case 4:ruleta(&penize);printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);system("cls");break;
+        default:system("cls");printf("Neplatna volba!");Sleep(2000);goto start;
 }
     printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);
     printf("Chces se vratit do menu? (1 = ano, 0 = ne): \n");
