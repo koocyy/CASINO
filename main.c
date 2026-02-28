@@ -130,6 +130,10 @@ void ruleta(int *penize) {
         system("cls");
         printf("VITEJ V RULETE\n");
         printf("\nMas %d kreditu\n", *penize);
+        system("cls");
+        printf("Chces si vsadit na barvu (1) nebo cislo (0)?\n");
+        scanf("%d",&hra);
+        system("cls");
         printf("Kolik chces vsadit?: ");
         scanf("%d", &sazka);
         if (sazka > *penize || sazka <= 0) {
@@ -138,9 +142,6 @@ void ruleta(int *penize) {
             Sleep(1500);
             continue;
         }
-        system("cls");
-        printf("Chces si vsadit na barvu (1) nebo cislo (0)?\n");
-        scanf("%d",&hra);
 
         if (hra==0) {
             system("cls");
