@@ -14,6 +14,12 @@ int dalsiCislo(int *akt_cislo) {
 
     }
 }
+
+int pocet_kol(int *Pkol) {
+    *Pkol = rand() % 101 + 400;
+    return *Pkol;
+}
+
 char* fmtNum(int n, char *buf) {
     if (n == 0)
         sprintf(buf, "\033[92m%02d\033[0m", n);
@@ -147,24 +153,34 @@ void ruleta(int *penize) {
                 9, 22, 18, 29, 7, 28, 12, 35, 3, 26
             };
             hideCursor();
+            int Pkol = 0;
+            pocet_kol(&Pkol);
             char buf1[20],buf2[20],buf3[20],buf4[20],buf5[20],buf6[20],buf7[20],buf8[20],buf9[20],buf10[20],buf11[20],buf12[20],buf13[20],buf14[20],buf15[20],buf16[20],buf17[20],buf18[20],buf19[20],buf20[20],buf21[20],buf22[20],buf23[20],buf24[20],buf25[20],buf26[20],buf27[20],buf28[20],buf29[20],buf30[20];
-            for (int i = 0; i < rand() % 101 + 400; i++) {
+            for (int i = 0; i < Pkol+1; i++) {
                 system("cls");
-                printf("                   v\n");
+                printf("                  /^\\\n");
                 printf("         |%s|%s|%s|%s|%s|%s|%s|\n",fmtNum(kolo[dalsiCislo(&a)],buf1),fmtNum(kolo[dalsiCislo(&j1)],buf2),fmtNum(kolo[dalsiCislo(&i1)],buf3),fmtNum(kolo[dalsiCislo(&h1)],buf4),fmtNum(kolo[dalsiCislo(&g1)],buf5),fmtNum(kolo[dalsiCislo(&f1)],buf6),fmtNum(kolo[dalsiCislo(&e1)],buf7));
-                printf("      |%s|         ^          |%s|\n",fmtNum(kolo[dalsiCislo(&b)],buf8),fmtNum(kolo[dalsiCislo(&d1)],buf9));
-                printf("   |%s|                          |%s|\n",fmtNum(kolo[dalsiCislo(&c)],buf10),fmtNum(kolo[dalsiCislo(&c1)],buf11));
-                printf("|%s|                                |%s|\n",fmtNum(kolo[dalsiCislo(&d)],buf12),fmtNum(kolo[dalsiCislo(&b1)],buf13));
-                printf("|%s|                                |%s|\n",fmtNum(kolo[dalsiCislo(&e)],buf14),fmtNum(kolo[dalsiCislo(&a1)],buf15));
+                printf("      |%s|        \\v/          |%s|\n",fmtNum(kolo[dalsiCislo(&b)],buf8),fmtNum(kolo[dalsiCislo(&d1)],buf9));
+                printf("   |%s|            |             |%s|\n",fmtNum(kolo[dalsiCislo(&c)],buf10),fmtNum(kolo[dalsiCislo(&c1)],buf11));
+                printf("|%s|               |                |%s|\n",fmtNum(kolo[dalsiCislo(&d)],buf12),fmtNum(kolo[dalsiCislo(&b1)],buf13));
+                printf("|%s|               |                |%s|\n",fmtNum(kolo[dalsiCislo(&e)],buf14),fmtNum(kolo[dalsiCislo(&a1)],buf15));
                 printf("|%s|             [###]              |%s|\n",fmtNum(kolo[dalsiCislo(&f)],buf16),fmtNum(kolo[dalsiCislo(&z)],buf17));
-                printf("|%s|            [# 0 #]             |%s|\n",fmtNum(kolo[dalsiCislo(&g)],buf18),fmtNum(kolo[dalsiCislo(&y)],buf19));
+                printf("|%s|------------[# 0 #]-------------|%s|\n",fmtNum(kolo[dalsiCislo(&g)],buf18),fmtNum(kolo[dalsiCislo(&y)],buf19));
                 printf("|%s|             [###]              |%s|\n",fmtNum(kolo[dalsiCislo(&h)],buf20),fmtNum(kolo[dalsiCislo(&x)],buf21));
-                printf("|%s|                                |%s|\n",fmtNum(kolo[dalsiCislo(&i2)],buf22),fmtNum(kolo[dalsiCislo(&w)],buf23));
-                printf("|%s|                                |%s|\n",fmtNum(kolo[dalsiCislo(&j)],buf24),fmtNum(kolo[dalsiCislo(&v)],buf25));
-                printf("   |%s|                          |%s|\n",fmtNum(kolo[dalsiCislo(&k)],buf26),fmtNum(kolo[dalsiCislo(&u)],buf27));
-                printf("      |%s|                    |%s|\n",fmtNum(kolo[dalsiCislo(&l)],buf28),fmtNum(kolo[dalsiCislo(&t)],buf29));
+                printf("|%s|               |                |%s|\n",fmtNum(kolo[dalsiCislo(&i2)],buf22),fmtNum(kolo[dalsiCislo(&w)],buf23));
+                printf("|%s|               |                |%s|\n",fmtNum(kolo[dalsiCislo(&j)],buf24),fmtNum(kolo[dalsiCislo(&v)],buf25));
+                printf("   |%s|            |             |%s|\n",fmtNum(kolo[dalsiCislo(&k)],buf26),fmtNum(kolo[dalsiCislo(&u)],buf27));
+                printf("      |%s|         |          |%s|\n",fmtNum(kolo[dalsiCislo(&l)],buf28),fmtNum(kolo[dalsiCislo(&t)],buf29));
                 printf("         |%s|%s|%s|%s|%s|%s|%s|\n",fmtNum(kolo[dalsiCislo(&m)],buf30),fmtNum(kolo[dalsiCislo(&n)],buf1),fmtNum(kolo[dalsiCislo(&o)],buf2),fmtNum(kolo[dalsiCislo(&p)],buf3),fmtNum(kolo[dalsiCislo(&q)],buf4),fmtNum(kolo[dalsiCislo(&r)],buf5),fmtNum(kolo[dalsiCislo(&s)],buf6));
-                Sleep(10);
+                printf("POCET KOL: %d\t\t\t%d",i,Pkol);
+                if (i>Pkol-35&&i>Pkol-17)
+                    Sleep(50);
+                else if (i>Pkol-17&&i>Pkol-7)
+                    Sleep(100);
+                else if (i>Pkol-7)
+                    Sleep(1000);
+                else
+                    Sleep(10);
             }
 
             // to co padlo = kolo[i1-1]
