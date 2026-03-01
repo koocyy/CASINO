@@ -197,7 +197,7 @@ void ruleta(int *penize) {
                 Sleep(1500);
                 *penize += sazka * 100;
             }
-            if (tipr == kolo[i1-1]) {
+             else if (tipr == kolo[i1-1]) {
                 printf("VYHRA!!!\n");
                 Sleep(1500);
                 *penize += sazka * 50;
