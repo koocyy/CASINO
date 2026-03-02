@@ -3,6 +3,24 @@
 #include <time.h>
 #include<windows.h>
 /* KURIHO CASINO (a kocyho) */
+
+void OBCHOD(int *penize) {
+    int menuo;
+    system("cls");
+    printf("Mas %d kreditu\n", *penize);
+    printf("VITEJ V OBCHODE\n");
+    printf("ZBOZI: TOKEN(500)-1\n");
+    printf("\nZMACKNI [9] PRO MENU\n");
+    scanf("%d",&menuo);
+
+    if(menuo==9)
+        goto menu;
+
+
+
+    menu:
+}
+
 int dalsiCislo(int *akt_cislo) {
     if (*akt_cislo == 35) {
         *akt_cislo = 0;
