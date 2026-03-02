@@ -317,7 +317,7 @@ void kolostesti(int *penize) {
     int sazka,hrat=1;
     while (hrat == 1) {
         system("cls");
-        printf("VITEJ V KOLESTESTI\n");
+        printf("VITEJ V KOLE STESTI\n");
         printf("\nMas %d kreditu\n", *penize);
         printf("Kolik chces vsadit?: ");
         scanf("%d", &sazka);
@@ -326,6 +326,63 @@ void kolostesti(int *penize) {
             printf("Neplatna sazka!\n");
             Sleep(1500);
             continue;
+        }
+        /*
+        int a=0,b=1,c=2,d=3,e=4,f=5,g=6,h=7,i2=8,j=9,k=10,l=11,m=12,n=13,o=14,p=15,q=16,r=17,s=18,t=19,u=20,v=21,w=22,x=23,y=24,z=25,a1=26,b1=27,c1=28,d1=29,e1=30,f1=31,g1=32,h1=33,i1=34,j1=35;
+            // padlo = rand() % 37;
+        int kolo[36] = {
+                0, 32, 15, 19, 4, 21, 2, 25, 17,
+                34, 6, 27, 13, 11, 30, 8, 23,
+                10, 5, 24, 16, 33, 1, 20, 14, 31,
+                9, 22, 18, 29, 7, 28, 12, 35, 3, 26
+        };
+         hideCursor();
+            int Pkol = 0;
+            pocet_kol(&Pkol);
+            char buf1[20],buf2[20],buf3[20],buf4[20],buf5[20],buf6[20],buf7[20],buf8[20],buf9[20],buf10[20],buf11[20],buf12[20],buf13[20],buf14[20],buf15[20],buf16[20],buf17[20],buf18[20],buf19[20],buf20[20],buf21[20],buf22[20],buf23[20],buf24[20],buf25[20],buf26[20],buf27[20],buf28[20],buf29[20],buf30[20];
+            for (int i = 0; i < Pkol+1; i++) {
+                system("cls");
+                printf("                  /^\\\n");
+                printf("         |%s|%s|%s|%s|%s|%s|%s|\n",fmtNum(kolo[dalsiCislo(&a)],buf1, tipr),fmtNum(kolo[dalsiCislo(&j1)],buf2, tipr),fmtNum(kolo[dalsiCislo(&i1)],buf3, tipr),fmtNum(kolo[dalsiCislo(&h1)],buf4, tipr),fmtNum(kolo[dalsiCislo(&g1)],buf5, tipr),fmtNum(kolo[dalsiCislo(&f1)],buf6, tipr),fmtNum(kolo[dalsiCislo(&e1)],buf7, tipr));
+                printf("      |%s|        \\v/         /|%s|\n",fmtNum(kolo[dalsiCislo(&b)],buf8, tipr),fmtNum(kolo[dalsiCislo(&d1)],buf9, tipr));
+                printf("   |%s| \\          |          /   |%s|\n",fmtNum(kolo[dalsiCislo(&c)],buf10, tipr),fmtNum(kolo[dalsiCislo(&c1)],buf11, tipr));
+                printf("|%s|     \\         |         /        |%s|\n",fmtNum(kolo[dalsiCislo(&d)],buf12, tipr),fmtNum(kolo[dalsiCislo(&b1)],buf13, tipr));
+                printf("|%s|      \\        |        /        |%s|\n",fmtNum(kolo[dalsiCislo(&e)],buf14, tipr),fmtNum(kolo[dalsiCislo(&a1)],buf15, tipr));
+                printf("|%s|       \\     [###]     /         |%s|\n",fmtNum(kolo[dalsiCislo(&f)],buf16, tipr),fmtNum(kolo[dalsiCislo(&z)],buf17, tipr));
+                printf("|%s|        |---[# 0 #]----|           |%s|\n",fmtNum(kolo[dalsiCislo(&g)],buf18, tipr),fmtNum(kolo[dalsiCislo(&y)],buf19, tipr));
+                printf("|%s|       /     [###]      \\       |%s|\n",fmtNum(kolo[dalsiCislo(&h)],buf20, tipr),fmtNum(kolo[dalsiCislo(&x)],buf21, tipr));
+                printf("|%s|      /        |         \\       |%s|\n",fmtNum(kolo[dalsiCislo(&i2)],buf22, tipr),fmtNum(kolo[dalsiCislo(&w)],buf23, tipr));
+                printf("|%s|     /         |          \\      |%s|\n",fmtNum(kolo[dalsiCislo(&j)],buf24, tipr),fmtNum(kolo[dalsiCislo(&v)],buf25, tipr));
+                printf("   |%s| /          |           \\  |%s|\n",fmtNum(kolo[dalsiCislo(&k)],buf26, tipr),fmtNum(kolo[dalsiCislo(&u)],buf27, tipr));
+                printf("      |%s|         |          |%s|\n",fmtNum(kolo[dalsiCislo(&l)],buf28, tipr),fmtNum(kolo[dalsiCislo(&t)],buf29, tipr));
+                printf("         |%s|%s|%s|%s|%s|%s|%s|\n",fmtNum(kolo[dalsiCislo(&m)],buf30, tipr),fmtNum(kolo[dalsiCislo(&n)],buf1, tipr),fmtNum(kolo[dalsiCislo(&o)],buf2, tipr),fmtNum(kolo[dalsiCislo(&p)],buf3, tipr),fmtNum(kolo[dalsiCislo(&q)],buf4, tipr),fmtNum(kolo[dalsiCislo(&r)],buf5, tipr),fmtNum(kolo[dalsiCislo(&s)],buf6, tipr));
+                system("cls");
+                printf("                  /^\\\n");
+                printf("         |%s|%s|%s|%s|%s|%s|%s|\n",fmtNum(kolo[dalsiCislo(&a)],buf1, tipr),fmtNum(kolo[dalsiCislo(&j1)],buf2, tipr),fmtNum(kolo[dalsiCislo(&i1)],buf3, tipr),fmtNum(kolo[dalsiCislo(&h1)],buf4, tipr),fmtNum(kolo[dalsiCislo(&g1)],buf5, tipr),fmtNum(kolo[dalsiCislo(&f1)],buf6, tipr),fmtNum(kolo[dalsiCislo(&e1)],buf7, tipr));
+                printf("      |%s|  \\     \\v/    /    |%s|\n",fmtNum(kolo[dalsiCislo(&b)],buf8, tipr),fmtNum(kolo[dalsiCislo(&d1)],buf9, tipr));
+                printf("   |%s|      \\          /        |%s|\n",fmtNum(kolo[dalsiCislo(&c)],buf10, tipr),fmtNum(kolo[dalsiCislo(&c1)],buf11, tipr));
+                printf("|%s|          \\        /            |%s|\n",fmtNum(kolo[dalsiCislo(&d)],buf12, tipr),fmtNum(kolo[dalsiCislo(&b1)],buf13, tipr));
+                printf("|%s|           \\      /             |%s|\n",fmtNum(kolo[dalsiCislo(&e)],buf14, tipr),fmtNum(kolo[dalsiCislo(&a1)],buf15, tipr));
+                printf("|%s|            \\[###]              |%s|\n",fmtNum(kolo[dalsiCislo(&f)],buf16, tipr),fmtNum(kolo[dalsiCislo(&z)],buf17, tipr));
+                printf("|%s|------------[# 0 #]-------------|%s|\n",fmtNum(kolo[dalsiCislo(&g)],buf18, tipr),fmtNum(kolo[dalsiCislo(&y)],buf19, tipr));
+                printf("|%s|             [###]\\             |%s|\n",fmtNum(kolo[dalsiCislo(&h)],buf20, tipr),fmtNum(kolo[dalsiCislo(&x)],buf21, tipr));
+                printf("|%s|            /      \\            |%s|\n",fmtNum(kolo[dalsiCislo(&i2)],buf22, tipr),fmtNum(kolo[dalsiCislo(&w)],buf23, tipr));
+                printf("|%s|           /        \\           |%s|\n",fmtNum(kolo[dalsiCislo(&j)],buf24, tipr),fmtNum(kolo[dalsiCislo(&v)],buf25, tipr));
+                printf("   |%s|       /          \\        |%s|\n",fmtNum(kolo[dalsiCislo(&k)],buf26, tipr),fmtNum(kolo[dalsiCislo(&u)],buf27, tipr));
+                printf("      |%s|   /            \\   |%s|\n",fmtNum(kolo[dalsiCislo(&l)],buf28, tipr),fmtNum(kolo[dalsiCislo(&t)],buf29, tipr));
+                printf("         |%s|%s|%s|%s|%s|%s|%s|\n",fmtNum(kolo[dalsiCislo(&m)],buf30, tipr),fmtNum(kolo[dalsiCislo(&n)],buf1, tipr),fmtNum(kolo[dalsiCislo(&o)],buf2, tipr),fmtNum(kolo[dalsiCislo(&p)],buf3, tipr),fmtNum(kolo[dalsiCislo(&q)],buf4, tipr),fmtNum(kolo[dalsiCislo(&r)],buf5, tipr),fmtNum(kolo[dalsiCislo(&s)],buf6, tipr));
+                if (i>Pkol-20&&i<Pkol-12) {
+                    Sleep(100);
+                }
+                else if (i>=Pkol-11&&i<Pkol-5){
+                    Sleep(170);
+                }
+                else if (i>=Pkol-5){
+                    Sleep(450);
+                }
+                else {
+                    Sleep(10);
+                }*/
 
 
 
@@ -333,9 +390,25 @@ void kolostesti(int *penize) {
 
 
 
-      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        printf("\nMas %d kreditu\n", *penize);
+        printf("Chces hrat znovu? (1 = ano, 0 = ne): ");
+        scanf("%d", &hrat);
+    }
 }
-*/
+
 
 int main() {
 srand(time(NULL));
