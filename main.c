@@ -207,9 +207,9 @@ void ruleta(int *penize) {
                     Sleep(10);
                 }
             }
-
+            Sleep(1000);
             // to co padlo = kolo[h1]
-
+            system("cls");
             showCursor();
             if (tipr==kolo[h1]&&kolo[h1]==0) {
                 printf("SUPER VYHRA!!!\n");
@@ -312,7 +312,7 @@ void blackjack(int *penize) {
     }
 }
 /*funkce pro niga kolo*/
-/*
+
 void kolostesti(int *penize) {
     int sazka,hrat=1;
     while (hrat == 1) {
