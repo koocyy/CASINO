@@ -37,7 +37,7 @@ void hideCursor() {
     CONSOLE_CURSOR_INFO cursorInfo;
 
     GetConsoleCursorInfo(hConsole, &cursorInfo);
-    cursorInfo.bVisible = FALSE;  // hide cursor
+    cursorInfo.bVisible = FALSE;
     SetConsoleCursorInfo(hConsole, &cursorInfo);
 }
 void showCursor() {
@@ -45,7 +45,7 @@ void showCursor() {
     CONSOLE_CURSOR_INFO cursorInfo;
 
     GetConsoleCursorInfo(hConsole, &cursorInfo);
-    cursorInfo.bVisible = TRUE;   // show cursor
+    cursorInfo.bVisible = TRUE;
     SetConsoleCursorInfo(hConsole, &cursorInfo);
 }
 
@@ -189,15 +189,15 @@ void ruleta(int *penize) {
                 }
             }
 
-            // to co padlo = kolo[i1-1]
+            // to co padlo = kolo[h1]
 
             showCursor();
-            if (tipr==kolo[i1-1]&&kolo[i1-1]==0) {
+            if (tipr==kolo[h1]&&kolo[h1]==0) {
                 printf("SUPER VYHRA!!!\n");
                 Sleep(1500);
                 *penize += sazka * 100;
             }
-             else if (tipr == kolo[i1-1]) {
+             else if (tipr == kolo[h1]) {
                 printf("VYHRA!!!\n");
                 Sleep(1500);
                 *penize += sazka * 50;
