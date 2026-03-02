@@ -416,8 +416,8 @@ int gamble,menu,penize=1000;
 do{
     start:
     system("cls");
-    printf("VITEJ V KURIHO A TONDOVEM CASINE!!!\n\n");
-    printf("VYBER SI: AUTOMAT-1\n\t  RULETA-2\n\t  BLACKJACK-3\n");
+    printf("VITEJ V KURIHO A KOCYHO CASINE!!!\n\n");
+    printf("VYBER SI:\nAUTOMAT-1\nRULETA-2\nBLACKJACK-3\nKOLO STESTI-4\n\n\nOBCHOD-9\n");
     scanf("%d",&gamble);
 
 switch (gamble){
