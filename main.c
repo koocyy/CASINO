@@ -424,7 +424,8 @@ switch (gamble){
         case 1:automat(&penize);printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);system("cls");break;
         case 2:ruleta(&penize);printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);system("cls");break;
         case 3:blackjack(&penize);printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);system("cls");break;
-        case 4:ruleta(&penize);printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);system("cls");break;
+        case 4:kolostesti(&penize);printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);system("cls");break;
+        case 9:OBCHOD(&penize);printf("\nZbylo ti %d kreditu.\n", penize);system("cls");break;
         default:system("cls");printf("Neplatna volba!");Sleep(2000);goto start;
 }
     printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);
