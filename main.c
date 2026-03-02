@@ -89,28 +89,29 @@ void automat(int *penize) {
 
         /* animace cisel */
         hideCursor();
+        system("cls");
         for (int i = 0; i < 250; i++) {
-            system("cls");
-            printf(" -------------");
-            printf("\n[-%d-][-%d-][-%d-]\n", rand() % 9 + 1, rand() % 9 + 1, rand() % 9 + 1);
-            printf(" -------------");
+            printf("\033[H");
+            printf(" -------------      ");
+            printf("\n[-%d-][-%d-][-%d-]            \n", rand() % 9 + 1, rand() % 9 + 1, rand() % 9 + 1);
+            printf(" -------------        ");
         }
         for (int i = 0; i < 250; i++) {
-            system("cls");
-            printf(" -|-----------");
-            printf("\n[-%d-][-%d-][-%d-]\n", v, rand() % 9 + 1, rand() % 9 + 1);
-            printf(" -|-----------");
+            printf("\033[H");
+            printf(" -|-----------     ");
+            printf("\n[-%d-][-%d-][-%d-]          \n", v, rand() % 9 + 1, rand() % 9 + 1);
+            printf(" -|-----------           ");
         }
         for (int i = 0; i < 250; i++) {
-            system("cls");
-            printf(" -|----|------");
-            printf("\n[-%d-][-%d-][-%d-]\n", v, a, rand() % 9 + 1);
-            printf(" -|----|------");
+            printf("\033[H");
+            printf(" -|----|------          ");
+            printf("\n[-%d-][-%d-][-%d-]      \n", v, a, rand() % 9 + 1);
+            printf(" -|----|------         ");
         }
         system("cls");
-        printf(" -|----|----|-");
-        printf("\n[-%d-][-%d-][-%d-]\n", v, a, r);
-        printf(" -|----|----|-");
+        printf(" -|----|----|-           ");
+        printf("\n[-%d-][-%d-][-%d-]       \n", v, a, r);
+        printf(" -|----|----|-      ");
         showCursor();
 
 
@@ -178,8 +179,8 @@ void ruleta(int *penize) {
             pocet_kol(&Pkol);
             char buf1[20],buf2[20],buf3[20],buf4[20],buf5[20],buf6[20],buf7[20],buf8[20],buf9[20],buf10[20],buf11[20],buf12[20],buf13[20],buf14[20],buf15[20],buf16[20],buf17[20],buf18[20],buf19[20],buf20[20],buf21[20],buf22[20],buf23[20],buf24[20],buf25[20],buf26[20],buf27[20],buf28[20],buf29[20],buf30[20];
             for (int i = 0; i < Pkol+1; i++) {
-                system("cls");
-                printf("                  /^\\\n");
+                printf("\033[H");
+                printf("                  /^\\                    \n");
                 printf("         |%s|%s|%s|%s|%s|%s|%s|\n",fmtNum(kolo[dalsiCislo(&a)],buf1, tipr),fmtNum(kolo[dalsiCislo(&j1)],buf2, tipr),fmtNum(kolo[dalsiCislo(&i1)],buf3, tipr),fmtNum(kolo[dalsiCislo(&h1)],buf4, tipr),fmtNum(kolo[dalsiCislo(&g1)],buf5, tipr),fmtNum(kolo[dalsiCislo(&f1)],buf6, tipr),fmtNum(kolo[dalsiCislo(&e1)],buf7, tipr));
                 printf("      |%s|        \\v/          |%s|\n",fmtNum(kolo[dalsiCislo(&b)],buf8, tipr),fmtNum(kolo[dalsiCislo(&d1)],buf9, tipr));
                 printf("   |%s|            |             |%s|\n",fmtNum(kolo[dalsiCislo(&c)],buf10, tipr),fmtNum(kolo[dalsiCislo(&c1)],buf11, tipr));
