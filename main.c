@@ -4,21 +4,44 @@
 #include<windows.h>
 /* KURIHO CASINO (a kocyho) */
 
-void OBCHOD(int *penize) {
-    int menuo;
+void OBCHOD(int *penize,int *TOKEN) {
+    int menuo,nakupovat=1;
+while (nakupovat == 1) {
     system("cls");
-    printf("Mas %d kreditu\n", *penize);
+    printf("Mas %d kreditu\n",*penize);
+    printf("Mas %d TOKENU\n", *TOKEN);
     printf("VITEJ V OBCHODE\n");
-    printf("ZBOZI: TOKEN(500)-1\n");
+    printf("ZBOZI: TOKEN(500) - [1]\n");
     printf("\nZMACKNI [9] PRO MENU\n");
     scanf("%d",&menuo);
 
-    if(menuo==9)
-        goto menu;
-
-
-
-    menu:
+    switch(menuo) {
+        case 1: if (*penize <= 0) {
+            system("cls");
+            printf("Nemas dostatek penez!(jsi chudy).\n");
+            Sleep(2000);
+            goto menu;
+        }
+        else {
+            system("cls");
+            printf("Zakoupil sis TOKEN");
+            *TOKEN += 1;
+            *penize -= 500;
+            printf("\nMas %d kreditu\n",*penize);
+            if (*TOKEN>1) {
+                printf("\nMas %d TOKENU\n",*TOKEN);
+                Sleep(2000);
+            }
+            else {
+                printf("\nMas %d TOKEN\n",*TOKEN);
+                Sleep(2000);
+            }
+        }
+        case 9: goto menu;
+    }
+    menu: printf("Chces pokracovat v nakupu? 1-ano 2-ne\n");
+    scanf("%d",&nakupovat);
+  }
 }
 
 int dalsiCislo(int *akt_cislo) {
