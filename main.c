@@ -421,7 +421,7 @@ void kolostesti(int *penize) {
 
 int main() {
 srand(time(NULL));
-int gamble,menu,penize=1000;
+int gamble,menu,penize=1000,TOKEN=0;
 do{
     start:
     system("cls");
@@ -434,7 +434,7 @@ switch (gamble){
         case 2:ruleta(&penize);printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);system("cls");break;
         case 3:blackjack(&penize);printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);system("cls");break;
         case 4:kolostesti(&penize);printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);system("cls");break;
-        case 9:OBCHOD(&penize);printf("\nZbylo ti %d kreditu.\n", penize);system("cls");break;
+        case 9:OBCHOD(&penize,&TOKEN);printf("\nZbylo ti %d kreditu.\n", penize);system("cls");break;
         default:system("cls");printf("Neplatna volba!");Sleep(2000);goto start;
 }
     printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);
