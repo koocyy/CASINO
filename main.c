@@ -420,6 +420,7 @@ void kolostesti(int *penize) {
 
 
 int main() {
+SetConsoleOutputCP(65001);
 srand(time(NULL));
 int gamble,menu,penize=1000,TOKEN=0;
 do{
