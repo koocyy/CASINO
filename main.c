@@ -325,10 +325,17 @@ void blackjack(int *penize) {
             Sleep(1500);
             *penize += sazka * 2;
         }
-        else
-        prohra: printf("Mas moc, PROHRAL JSI\n");
-        Sleep(2000);
-        *penize -= sazka;
+        else {
+            prohra: printf("Mas moc, PROHRAL JSI\n");
+            Sleep(2000);
+            *penize -= sazka;
+        }
+        if (*penize <= 0) {
+            system("cls");
+            printf("Dosly ti penize! Pujcil sis 100 od banky.\n");
+            *penize = 100;
+            Sleep(2000);
+        }
         exit:
         printf("Chces hrat znovu? (1 = ano, 0 = ne): \n");
         scanf("%d", &hrat);
