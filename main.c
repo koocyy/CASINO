@@ -434,7 +434,7 @@ do{
     start:
     system("cls");
     printf("VITEJ V KURIHO A KOCYHO CASINE!!!\n\n");
-    printf("VYBER SI:\nAUTOMAT-1\nRULETA-2\nBLACKJACK-3\nKOLO STESTI-4\n\n\nOBCHOD-9\n");
+    printf("VYBER SI:\nAUTOMAT - 1\nRULETA - 2\nBLACKJACK - 3\nKOLO STESTI - 4\n\n\nOBCHOD - 9\n");
     scanf("%d",&gamble);
 
 switch (gamble){
