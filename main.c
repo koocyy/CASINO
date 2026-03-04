@@ -8,10 +8,16 @@ void OBCHOD(int *penize,int *TOKEN) {
     int menuo,nakupovat=1;
 while (nakupovat == 1) {
     system("cls");
-    printf("Mas %d kreditu\n",*penize);
-    printf("Mas %d TOKENU\n", *TOKEN);
-    printf("VITEJ V OBCHODE\n");
-    printf("ZBOZI: TOKEN(500) - [1]\n");
+    if (*TOKEN>1) {
+        printf("Mas %d kreditu a %d TOKENU\n",*penize,*TOKEN);
+        Sleep(2000);
+    }
+    else {
+        printf("Mas %d kreditu a %d TOKENU\n",*penize,*TOKEN);
+        Sleep(2000);
+    }
+    printf("\nVITEJ V OBCHODE\n");
+    printf("\nZBOZI: TOKEN(500) - [1]\n");
     printf("\nZMACKNI [9] PRO MENU\n");
     scanf("%d",&menuo);
 
@@ -29,7 +35,7 @@ while (nakupovat == 1) {
             *penize -= 500;
             printf("\nMas %d kreditu\n",*penize);
             if (*TOKEN>1) {
-                printf("\nMas %d TOKENU\n",*TOKEN);
+                printf("\nMas %d TOKENY\n",*TOKEN);
                 Sleep(2000);
             }
             else {
