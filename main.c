@@ -60,7 +60,17 @@ int dalsiCislo(int *akt_cislo) {
     else {
         *akt_cislo += 1;
         return *akt_cislo;
+    }
+}
 
+int dalsiSymbol(int *akt_cislo) {
+    if (*akt_cislo == 7) {
+        *akt_cislo = 0;
+        return *akt_cislo;
+    }
+    else {
+        *akt_cislo += 1;
+        return *akt_cislo;
     }
 }
 
@@ -367,10 +377,10 @@ void kolostesti(int *penize) {
         }
             // padlo = rand() % 37;
         char *symboly[8] = {
-                "$","⚡","♫","♫","⚠","☣","☢","✘",
+                "$$","⚡","XX","♫","⚠","☣","☢","✘",
         };
         hideCursor();
-
+        int a=0,b=1,c=2,d=3,e=4,f=5,g=6,h=7;
         int Pkol = 0;
         pocet_kol(&Pkol);
             for (int i = 0; i < Pkol+1; i++) {
@@ -378,55 +388,43 @@ void kolostesti(int *penize) {
                 printf("            xxxxxxxxxxx            \n");
                 printf("        xxxx     |     xxxx        \n");
                 printf("     xxx         |         xxx     \n");
-                printf("   xx   x    %s  |  %s    x   xx   \n",symboly[1],symboly[2]);
+                printf("   xx   x    %s  |  %s     x  xx   \n",symboly[dalsiSymbol(&b)],symboly[dalsiSymbol(&a)]);
                 printf("  x      xx      |      xx      x  \n");
                 printf(" x         xx    |    xx         x \n");
-                printf(" x           xx  |  xx           x \n");
+                printf(" x    %s      xx  |  xx      %s    x \n",symboly[dalsiSymbol(&c)],symboly[dalsiSymbol(&h)]);
                 printf("x              ┌---┐              x\n");
                 printf("x--------------| + |--------------x\n");
                 printf("x              └---┘              x\n");
-                printf(" x           xx  |  xx           x \n");
+                printf(" x    %s      xx  |  xx       %s   x \n",symboly[dalsiSymbol(&d)],symboly[dalsiSymbol(&g)]);
                 printf(" x         xx    |    xx         x \n");
                 printf("  x      xx      |      xx      x  \n");
-                printf("   xx   x        |        x   xx   \n");
+                printf("   xx   x    %s   |   %s    x   xx   \n",symboly[dalsiSymbol(&e)],symboly[dalsiSymbol(&f)]);
                 printf("     xxx         |         xxx     \n");
                 printf("        xxxx     |     xxxx        \n");
                 printf("            xxxxxxxxxxx            \n");
+                Sleep(1000);
+                printf("\033[H");
+                printf("            xxxxxxxxxxx            \n");
+                printf("        xxxx     x     xxxx        \n");
+                printf("     xxx         x         xxx     \n");
+                printf("   xx   \\        x        /  xx   \n");
+                printf("  x      \\\\      x      //      x  \n");
+                printf(" x         \\\\    x    //         x \n");
+                printf(" x           \\\\  x  //           x \n");
+                printf("x              ┌---┐              x\n");
+                printf("xxxxxxxxxxxxxxx| x |xxxxxxxxxxxxxxx\n");
+                printf("x              └---┘              x\n");
+                printf(" x           //  x  \\\\           x \n");
+                printf(" x         //    x    \\\\         x \n");
+                printf("  x      //      x      \\\\      x  \n");
+                printf("   xx   /        x        \\   xx   \n");
+                printf("     xxx         x         xxx     \n");
+                printf("        xxxx     x     xxxx        \n");
+                printf("            xxxxxxxxxxx            \n");
+                Sleep(1000);
 
 
-                if (i>Pkol-20&&i<Pkol-12) {
-                    Sleep(100);
-                }
-                else if (i>=Pkol-11&&i<Pkol-5){
-                    Sleep(170);
-                }
-                else if (i>=Pkol-5){
-                    Sleep(450);
-                }
-                else {
-                    Sleep(10);
-                }
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         printf("\nMas %d kreditu\n", *penize);
         printf("Chces hrat znovu? (1 = ano, 0 = ne): ");
         scanf("%d", &hrat);
