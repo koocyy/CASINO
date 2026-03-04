@@ -154,8 +154,8 @@ void automat(int *penize) {
         }
         if (*penize <= 0) {
             system("cls");
-            printf("Dosly ti penize! Restart na 1000 kreditu.\n");
-            *penize = 1000;
+            printf("Dosly ti penize! Pujcil sis 100 od banky.\n");
+            *penize = 100;
             Sleep(2000);
         }
         printf("\nMas %d kreditu\n", *penize);
@@ -274,8 +274,8 @@ void ruleta(int *penize) {
         }
         if (*penize <= 0) {
             system("cls");
-            printf("Dosly ti penize! Restart na 1000 kreditu.\n");
-            *penize = 1000;
+            printf("Dosly ti penize! Pujcil sis 100 od banky.\n");
+            *penize = 100;
             Sleep(2000);
         }
         printf("\nMas %d kreditu\n", *penize);
