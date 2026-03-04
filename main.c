@@ -4,6 +4,8 @@
 #include<windows.h>
 /* KURIHO CASINO (a kocyho) */
 //https://code-with-me.global.jetbrains.com/2Io03S_JenD7w6Pie1cETQ
+//curam
+//kakam
 void OBCHOD(int *penize,int *TOKEN) {
     int menuo,nakupovat=1;
 while (nakupovat == 1) {
