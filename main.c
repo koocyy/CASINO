@@ -143,7 +143,7 @@ void automat(int *penize) {
             Sleep(1500);
             *penize += sazka * 20;
         } else if (v == a || a == r) {
-                printf("\nJACKPOT!!!\n");
+                printf("\nVYHRA!!!\n");
                 Sleep(1500);
                *penize += sazka * 3;
                }
