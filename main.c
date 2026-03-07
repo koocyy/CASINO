@@ -10,13 +10,21 @@ void OBCHOD(int *penize,int *TOKEN) {
     int menuo,nakupovat=1;
 while (nakupovat == 1) {
     system("cls");
-    if (*TOKEN>1) {
+    if (*TOKEN==0) {
         printf("Mas %d kreditu a %d TOKENU\n",*penize,*TOKEN);
-        Sleep(2000);
+        Sleep(1000);
     }
-    else {
-        printf("Mas %d kreditu a %d TOKENU\n",*penize,*TOKEN);
-        Sleep(2000);
+    else if (*TOKEN==1) {
+        printf("\nMas %d kreditu a %d TOKEN\n",*penize,*TOKEN);
+        Sleep(1000);
+    }
+    else if (*TOKEN>1&&*TOKEN<5) {
+        printf("\nMas %d kreditu a %d TOKENY\n",*penize,*TOKEN);
+        Sleep(1000);
+    }
+    else if (*TOKEN>4) {
+        printf("\nMas %d kreditu a %d TOKENU\n",*penize,*TOKEN);
+        Sleep(1000);
     }
     printf("\nVITEJ V OBCHODE\n");
     printf("\nZBOZI: TOKEN(500) - [1]\n");
@@ -35,14 +43,21 @@ while (nakupovat == 1) {
             printf("Zakoupil sis TOKEN");
             *TOKEN += 1;
             *penize -= 500;
-            printf("\nMas %d kreditu\n",*penize);
-            if (*TOKEN>1) {
-                printf("\nMas %d TOKENY\n",*TOKEN);
-                Sleep(2000);
+            if (*TOKEN==0) {
+                printf("Mas %d kreditu a %d TOKENU\n",*penize,*TOKEN);
+                Sleep(1000);
             }
-            else {
-                printf("\nMas %d TOKEN\n",*TOKEN);
-                Sleep(2000);
+            else if (*TOKEN==1) {
+                printf("\nMas %d kreditu a %d TOKEN\n",*penize,*TOKEN);
+                Sleep(1000);
+            }
+            else if (*TOKEN>1&&*TOKEN<5) {
+                printf("\nMas %d kreditu a %d TOKENY\n",*penize,*TOKEN);
+                Sleep(1000);
+            }
+            else if (*TOKEN>4) {
+                printf("\nMas %d kreditu a %d TOKENU\n",*penize,*TOKEN);
+                Sleep(1000);
             }
         }
         case 9: goto menu;
