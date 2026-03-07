@@ -376,19 +376,47 @@ void blackjack(int *penize) {
 }
 /*funkce pro niga kolo*/
 
-void kolostesti(int *penize) {
-    int sazka,hrat=1;
+void kolostesti(int *penize,int *TOKEN) {
+    int roz,hrat=1;
     while (hrat == 1) {
         system("cls");
         printf("VITEJ V KOLE STESTI\n");
-        printf("\nMas %d kreditu\n", *penize);
-        printf("Kolik chces vsadit?: ");
-        scanf("%d", &sazka);
-        if (sazka > *penize || sazka <= 0) {
+        if (*TOKEN==0) {
+            printf("Mas %d kreditu a %d TOKENU\n",*penize,*TOKEN);
+            Sleep(1000);
+        }
+        else if (*TOKEN==1) {
+            printf("\nMas %d kreditu a %d TOKEN\n",*penize,*TOKEN);
+            Sleep(1000);
+        }
+        else if (*TOKEN>1&&*TOKEN<5) {
+            printf("\nMas %d kreditu a %d TOKENY\n",*penize,*TOKEN);
+            Sleep(1000);
+        }
+        else if (*TOKEN>4) {
+            printf("\nMas %d kreditu a %d TOKENU\n",*penize,*TOKEN);
+            Sleep(1000);
+        }
+        znova:
+        printf("1 ZATOCENI = 1 TOKEN");
+        printf("\n1 pro ZATOCENI | 2 pro MENU");
+        scanf("%d", &roz);
+        if (roz==2) {
+            goto menuk;
+        }
+        else if (roz==1) {
+            goto tocit;
+        }
+        else {
+            printf("SPATNA VOLBA!;");
+            goto znova;
+        }
+        tocit:
+        if (*TOKEN < 1) {
             system("cls");
-            printf("Neplatna sazka!\n");
+            printf("Nemas TOKEN!\n");
             Sleep(1500);
-            continue;
+            goto menuk;
         }
             // padlo = rand() % 37;
         char *symboly[8] = {
@@ -440,10 +468,26 @@ void kolostesti(int *penize) {
 
 
             }
-        printf("\nMas %d kreditu\n", *penize);
+        if (*TOKEN==0) {
+            printf("Mas %d kreditu a %d TOKENU\n",*penize,*TOKEN);
+            Sleep(1000);
+        }
+        else if (*TOKEN==1) {
+            printf("\nMas %d kreditu a %d TOKEN\n",*penize,*TOKEN);
+            Sleep(1000);
+        }
+        else if (*TOKEN>1&&*TOKEN<5) {
+            printf("\nMas %d kreditu a %d TOKENY\n",*penize,*TOKEN);
+            Sleep(1000);
+        }
+        else if (*TOKEN>4) {
+            printf("\nMas %d kreditu a %d TOKENU\n",*penize,*TOKEN);
+            Sleep(1000);
+        }
         printf("Chces hrat znovu? (1 = ano, 0 = ne): ");
         scanf("%d", &hrat);
     }
+    menuk:
 }
 
 
