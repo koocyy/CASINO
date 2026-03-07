@@ -377,7 +377,7 @@ void kolostesti(int *penize) {
         }
             // padlo = rand() % 37;
         char *symboly[8] = {
-                "$$","⚡","XX","♫","⚠","☣","☢","✘",
+                "$$","⚡","XX","♫♫","⚠⚠","☣☣","☢☢","✘✘",
         };
         hideCursor();
         int a=0,b=1,c=2,d=3,e=4,f=5,g=6,h=7;
@@ -388,17 +388,17 @@ void kolostesti(int *penize) {
                 printf("            xxxxxxxxxxx            \n");
                 printf("        xxxx     |     xxxx        \n");
                 printf("     xxx         |         xxx     \n");
-                printf("   xx   x    %s  |  %s     x  xx   \n",symboly[dalsiSymbol(&b)],symboly[dalsiSymbol(&a)]);
+                printf("   xx   x    %s  |  %s    x   xx   \n",symboly[dalsiSymbol(&b)],symboly[dalsiSymbol(&a)]);
                 printf("  x      xx      |      xx      x  \n");
                 printf(" x         xx    |    xx         x \n");
-                printf(" x    %s      xx  |  xx      %s    x \n",symboly[dalsiSymbol(&c)],symboly[dalsiSymbol(&h)]);
+                printf(" x    %s     xx  |  xx     %s    x \n",symboly[dalsiSymbol(&c)],symboly[dalsiSymbol(&h)]);
                 printf("x              ┌---┐              x\n");
                 printf("x--------------| + |--------------x\n");
                 printf("x              └---┘              x\n");
-                printf(" x    %s      xx  |  xx       %s   x \n",symboly[dalsiSymbol(&d)],symboly[dalsiSymbol(&g)]);
+                printf(" x    %s     xx  |  xx     %s    x \n",symboly[dalsiSymbol(&d)],symboly[dalsiSymbol(&g)]);
                 printf(" x         xx    |    xx         x \n");
                 printf("  x      xx      |      xx      x  \n");
-                printf("   xx   x    %s   |   %s    x   xx   \n",symboly[dalsiSymbol(&e)],symboly[dalsiSymbol(&f)]);
+                printf("   xx   x    %s  |   %s   x   xx   \n",symboly[dalsiSymbol(&e)],symboly[dalsiSymbol(&f)]);
                 printf("     xxx         |         xxx     \n");
                 printf("        xxxx     |     xxxx        \n");
                 printf("            xxxxxxxxxxx            \n");
@@ -407,7 +407,7 @@ void kolostesti(int *penize) {
                 printf("            xxxxxxxxxxx            \n");
                 printf("        xxxx     x     xxxx        \n");
                 printf("     xxx         x         xxx     \n");
-                printf("   xx   \\        x        /  xx   \n");
+                printf("   xx   \\        x        /   xx   \n");
                 printf("  x      \\\\      x      //      x  \n");
                 printf(" x         \\\\    x    //         x \n");
                 printf(" x           \\\\  x  //           x \n");
@@ -443,17 +443,17 @@ do{
     printf("VYBER SI:\nAUTOMAT - 1\nRULETA - 2\nBLACKJACK - 3\nKOLO STESTI - 4\n\n\nOBCHOD - 9\n");
     scanf("%d",&gamble);
 
-switch (gamble){
+    switch (gamble){
         case 1:automat(&penize);printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);system("cls");break;
         case 2:ruleta(&penize);printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);system("cls");break;
         case 3:blackjack(&penize);printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);system("cls");break;
         case 4:kolostesti(&penize);printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);system("cls");break;
         case 9:OBCHOD(&penize,&TOKEN);printf("\nZbylo ti %d kreditu.\n", penize);system("cls");break;
         default:system("cls");printf("Neplatna volba!");Sleep(2000);goto start;
-}
+    }
     printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);
     printf("Chces se vratit do menu? (1 = ano, 0 = ne): \n");
     scanf("%d", &menu);
-}while(menu == 1);
-return 0;
+    }while(menu == 1);
+    return 0;
 }
