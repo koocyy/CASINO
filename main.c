@@ -6,65 +6,40 @@
 //https://code-with-me.global.jetbrains.com/2Io03S_JenD7w6Pie1cETQ
 //curam
 //kakam
-void OBCHOD(int *penize,int *TOKEN) {
-    int menuo,nakupovat=1;
-while (nakupovat == 1) {
-    system("cls");
-    if (*TOKEN==0) {
-        printf("Mas %d kreditu a %d TOKENU\n",*penize,*TOKEN);
-        Sleep(1000);
-    }
-    else if (*TOKEN==1) {
-        printf("\nMas %d kreditu a %d TOKEN\n",*penize,*TOKEN);
-        Sleep(1000);
-    }
-    else if (*TOKEN>1&&*TOKEN<5) {
-        printf("\nMas %d kreditu a %d TOKENY\n",*penize,*TOKEN);
-        Sleep(1000);
-    }
-    else if (*TOKEN>4) {
-        printf("\nMas %d kreditu a %d TOKENU\n",*penize,*TOKEN);
-        Sleep(1000);
-    }
-    printf("\nVITEJ V OBCHODE\n");
-    printf("\nZBOZI: TOKEN(500) - [1]\n");
-    printf("\nZMACKNI [9] PRO MENU\n");
-    scanf("%d",&menuo);
 
-    switch(menuo) {
-        case 1: if (*penize <= 0) {
-            system("cls");
-            printf("Nemas dostatek penez!(jsi chudy).\n");
-            Sleep(2000);
-            goto menu;
-        }
-        else {
-            system("cls");
-            printf("Zakoupil sis TOKEN");
-            *TOKEN += 1;
-            *penize -= 500;
-            if (*TOKEN==0) {
-                printf("Mas %d kreditu a %d TOKENU\n",*penize,*TOKEN);
-                Sleep(1000);
-            }
-            else if (*TOKEN==1) {
-                printf("\nMas %d kreditu a %d TOKEN\n",*penize,*TOKEN);
-                Sleep(1000);
-            }
-            else if (*TOKEN>1&&*TOKEN<5) {
-                printf("\nMas %d kreditu a %d TOKENY\n",*penize,*TOKEN);
-                Sleep(1000);
-            }
-            else if (*TOKEN>4) {
-                printf("\nMas %d kreditu a %d TOKENU\n",*penize,*TOKEN);
-                Sleep(1000);
-            }
-        }
-        case 9: goto menu;
+int getConsoleDims(int d) {
+    // func for getting the dimensions of our console
+    // d 1 = x (in columns); 2 = y (in rows)
+    if (d==1) {
+        CONSOLE_SCREEN_BUFFER_INFO csbi;
+        int columns;
+        GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
+        columns = csbi.srWindow.Right - csbi.srWindow.Left + 1;
+        return columns;
     }
-    menu: printf("Chces pokracovat v nakupu? 1-ano 2-ne\n");
-    scanf("%d",&nakupovat);
-  }
+    else if (d==2) {
+        CONSOLE_SCREEN_BUFFER_INFO csbi;
+        int rows;
+        GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
+        rows = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
+        return rows;
+    }
+    else {
+        return 0;
+    }
+}
+
+void printCenter(const char *str, int line) {
+    int consoleWidth = getConsoleDims(1);
+    int strLen = (int)strlen(str);
+    int xPos = (consoleWidth - strLen) / 2;
+
+    COORD coord;
+    coord.X = xPos;
+    coord.Y = line;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+
+    printf("%s", str);
 }
 
 int dalsiCislo(int *akt_cislo) {
@@ -124,12 +99,32 @@ void showCursor() {
 }
 
 /* funkce pro nas automat */
-void automat(int *penize) {
-    int sazka,v,a,r,hrat=1;
+void automat(int *penize, int *TOKEN) {
+    int sazka,v,a,r,hrat=1,Tier;
     while (hrat == 1) {
         system("cls");
         printf("VITEJ V AUTOMATU\n");
-        printf("\nMas %d kreditu\n", *penize);
+        system("cls");
+        printf("VITEJ V KOLE STESTI\n");
+        if (*TOKEN==0) {
+            printf("Mas %d kreditu a %d TOKENU\n",*penize,*TOKEN);
+            Sleep(1000);
+        }
+        else if (*TOKEN==1) {
+            printf("\nMas %d kreditu a %d TOKEN\n",*penize,*TOKEN);
+            Sleep(1000);
+        }
+        else if (*TOKEN>1&&*TOKEN<5) {
+            printf("\nMas %d kreditu a %d TOKENY\n",*penize,*TOKEN);
+            Sleep(1000);
+        }
+        else if (*TOKEN>4) {
+            printf("\nMas %d kreditu a %d TOKENU\n",*penize,*TOKEN);
+            Sleep(1000);
+        }
+        printf("1 pro IRON automat 2 pro GOLD automat");
+        scanf("%d",&Tier);
+        // switch (Tdefier)
         printf("Kolik chces vsadit?\n");
         scanf("%d", &sazka);
 
@@ -191,6 +186,55 @@ void automat(int *penize) {
             *penize = 100;
             Sleep(2000);
         }
+
+        hideCursor();
+        system("cls");
+        for (int i = 0; i < 250; i++) {
+            printf("\033[H");
+            printf(" -------------      ");
+            printf("\n[-%d-][-%d-][-%d-]            \n", rand() % 9 + 1, rand() % 9 + 1, rand() % 9 + 1);
+            printf(" -------------        ");
+        }
+        for (int i = 0; i < 250; i++) {
+            printf("\033[H");
+            printf(" -|-----------     ");
+            printf("\n[-%d-][-%d-][-%d-]          \n", v, rand() % 9 + 1, rand() % 9 + 1);
+            printf(" -|-----------           ");
+        }
+        for (int i = 0; i < 250; i++) {
+            printf("\033[H");
+            printf(" -|----|------          ");
+            printf("\n[-%d-][-%d-][-%d-]      \n", v, a, rand() % 9 + 1);
+            printf(" -|----|------         ");
+        }
+        system("cls");
+        printf(" -|----|----|-           ");
+        printf("\n[-%d-][-%d-][-%d-]       \n", v, a, r);
+        printf(" -|----|----|-      ");
+        showCursor();
+
+
+        if (v == a && a == r) {
+            printf("\nJACKPOT!!!\n");
+            Sleep(1500);
+            *penize += sazka * 20;
+        } else if (v == a || a == r) {
+            printf("\nVYHRA!!!\n");
+            Sleep(1500);
+            *penize += sazka * 3;
+        }
+        else {
+            printf("\nProhral jsi.\n");
+            Sleep(1500);
+            *penize -= sazka;
+        }
+        if (*penize <= 0) {
+            system("cls");
+            printf("Dosly ti penize! Pujcil sis 100 od banky.\n");
+            *penize = 100;
+            Sleep(2000);
+        }
+
         printf("\nMas %d kreditu\n", *penize);
         printf("Chces hrat znovu? (1 = ano, 0 = ne): ");
         scanf("%d", &hrat);
@@ -490,6 +534,66 @@ void kolostesti(int *penize,int *TOKEN) {
     menuk:
 }
 
+void OBCHOD(int *penize,int *TOKEN) {
+    int menuo,nakupovat=1;
+    while (nakupovat == 1) {
+        system("cls");
+        if (*TOKEN==0) {
+            printf("Mas %d kreditu a %d TOKENU\n",*penize,*TOKEN);
+            Sleep(1000);
+        }
+        else if (*TOKEN==1) {
+            printf("\nMas %d kreditu a %d TOKEN\n",*penize,*TOKEN);
+            Sleep(1000);
+        }
+        else if (*TOKEN>1&&*TOKEN<5) {
+            printf("\nMas %d kreditu a %d TOKENY\n",*penize,*TOKEN);
+            Sleep(1000);
+        }
+        else if (*TOKEN>4) {
+            printf("\nMas %d kreditu a %d TOKENU\n",*penize,*TOKEN);
+            Sleep(1000);
+        }
+        printf("\nVITEJ V OBCHODE\n");
+        printf("\nZBOZI: TOKEN(500) - [1]\n");
+        printf("\nZMACKNI [9] PRO MENU\n");
+        scanf("%d",&menuo);
+
+        switch(menuo) {
+            case 1: if (*penize <= 0) {
+                system("cls");
+                printf("Nemas dostatek penez!(jsi chudy).\n");
+                Sleep(2000);
+                goto menu;
+            }
+            else {
+                system("cls");
+                printf("Zakoupil sis TOKEN");
+                *TOKEN += 1;
+                *penize -= 500;
+                if (*TOKEN==0) {
+                    printf("Mas %d kreditu a %d TOKENU\n",*penize,*TOKEN);
+                    Sleep(1000);
+                }
+                else if (*TOKEN==1) {
+                    printf("\nMas %d kreditu a %d TOKEN\n",*penize,*TOKEN);
+                    Sleep(1000);
+                }
+                else if (*TOKEN>1&&*TOKEN<5) {
+                    printf("\nMas %d kreditu a %d TOKENY\n",*penize,*TOKEN);
+                    Sleep(1000);
+                }
+                else if (*TOKEN>4) {
+                    printf("\nMas %d kreditu a %d TOKENU\n",*penize,*TOKEN);
+                    Sleep(1000);
+                }
+            }
+            case 9: goto menu;
+        }
+        menu: printf("Chces pokracovat v nakupu? 1-ano 2-ne\n");
+        scanf("%d",&nakupovat);
+    }
+}
 
 int main() {
 SetConsoleOutputCP(65001);
@@ -498,12 +602,18 @@ int gamble,menu,penize=1000,TOKEN=0;
 do{
     start:
     system("cls");
-    printf("VITEJ V KURIHO A KOCYHO CASINE!!!\n\n");
-    printf("VYBER SI:\nAUTOMAT - 1\nRULETA - 2\nBLACKJACK - 3\nKOLO STESTI - 4\n\n\nOBCHOD - 9\n");
+    printCenter("VITEJ V KURIHO A KOCYHO CASINE!!!",2);
+    printCenter("VYBER SI:",3);
+    printCenter("AUTOMAT - 1",4);
+    printCenter("RULETA - 2",5);
+    printCenter("BLACKJACK - 3",6);
+    printCenter("KOLO STESTI - 4",7);
+    printCenter("OBCHOD - 9",8);
+
     scanf("%d",&gamble);
 
     switch (gamble){
-        case 1:automat(&penize);printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);system("cls");break;
+        case 1:automat(&penize,&TOKEN);printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);system("cls");break;
         case 2:ruleta(&penize);printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);system("cls");break;
         case 3:blackjack(&penize);printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);system("cls");break;
         case 4:kolostesti(&penize,&TOKEN);printf("\nKonec hry. Zbylo ti %d kreditu.\n", penize);system("cls");goto start;
