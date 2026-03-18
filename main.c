@@ -98,6 +98,36 @@ void showCursor() {
     SetConsoleCursorInfo(hConsole, &cursorInfo);
 }
 
+void drawOutline() {
+        hideCursor();
+        COORD coord = {0, 0};
+        SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+        printf("╔");
+        for (int j=1;j<getConsoleDims(1)-1;j++) {
+            printf("═");
+        }
+        printf("╗");
+        for (int k=1;k<getConsoleDims(2);k++) {
+            coord = (COORD){0, k};
+            SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+            printf("║");
+        }
+        coord = (COORD){0, getConsoleDims(2)-1};
+        SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+        printf("╚");
+        for (int l=1;l<getConsoleDims(1)-1;l++) {
+            printf("═");
+        }
+        printf("╝");
+        for (int m=1;m<getConsoleDims(2)-1;m++) {
+            coord = (COORD){getConsoleDims(1)-1, m};
+            SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+            printf("║");
+        }
+        showCursor();
+
+}
+
 /* funkce pro nas automat */
 void automat(int *penize, int *TOKEN) {
     int sazka,v,a,r,hrat=1,Tier;
@@ -124,121 +154,152 @@ void automat(int *penize, int *TOKEN) {
         }
         printf("1 pro IRON automat 2 pro GOLD automat");
         scanf("%d",&Tier);
-        // switch (Tdefier)
-        printf("Kolik chces vsadit?\n");
-        scanf("%d", &sazka);
-
-        if (sazka > *penize || sazka <= 0) {
-            system("cls");
-            printf("Neplatna sazka!\n");
-            Sleep(1500);
-            continue;
-        }
         v = rand() % 9 + 1;
         a = rand() % 9 + 1;
         r = rand() % 9 + 1;
+         if (Tier==1){
 
-        /* animace cisel */
-        hideCursor();
-        system("cls");
-        for (int i = 0; i < 250; i++) {
-            printf("\033[H");
-            printf(" -------------      ");
-            printf("\n[-%d-][-%d-][-%d-]            \n", rand() % 9 + 1, rand() % 9 + 1, rand() % 9 + 1);
-            printf(" -------------        ");
-        }
-        for (int i = 0; i < 250; i++) {
-            printf("\033[H");
-            printf(" -|-----------     ");
-            printf("\n[-%d-][-%d-][-%d-]          \n", v, rand() % 9 + 1, rand() % 9 + 1);
-            printf(" -|-----------           ");
-        }
-        for (int i = 0; i < 250; i++) {
-            printf("\033[H");
-            printf(" -|----|------          ");
-            printf("\n[-%d-][-%d-][-%d-]      \n", v, a, rand() % 9 + 1);
-            printf(" -|----|------         ");
-        }
-        system("cls");
-        printf(" -|----|----|-           ");
-        printf("\n[-%d-][-%d-][-%d-]       \n", v, a, r);
-        printf(" -|----|----|-      ");
-        showCursor();
+                 printf("Kolik chces vsadit?\n");
+                 scanf("%d", &sazka);
 
+                 if (sazka > *penize || sazka <= 0) {
+                     system("cls");
+                     printf("Neplatna sazka!\n");
+                     Sleep(1500);
+                     continue;
+                 }
 
-        if (v == a && a == r) {
-            printf("\nJACKPOT!!!\n");
-            Sleep(1500);
-            *penize += sazka * 20;
-        } else if (v == a || a == r) {
-                printf("\nVYHRA!!!\n");
-                Sleep(1500);
-               *penize += sazka * 3;
-               }
-            else {
-            printf("\nProhral jsi.\n");
-            Sleep(1500);
-            *penize -= sazka;
-        }
-        if (*penize <= 0) {
-            system("cls");
-            printf("Dosly ti penize! Pujcil sis 100 od banky.\n");
-            *penize = 100;
-            Sleep(2000);
-        }
-
-        hideCursor();
-        system("cls");
-        for (int i = 0; i < 250; i++) {
-            printf("\033[H");
-            printf(" -------------      ");
-            printf("\n[-%d-][-%d-][-%d-]            \n", rand() % 9 + 1, rand() % 9 + 1, rand() % 9 + 1);
-            printf(" -------------        ");
-        }
-        for (int i = 0; i < 250; i++) {
-            printf("\033[H");
-            printf(" -|-----------     ");
-            printf("\n[-%d-][-%d-][-%d-]          \n", v, rand() % 9 + 1, rand() % 9 + 1);
-            printf(" -|-----------           ");
-        }
-        for (int i = 0; i < 250; i++) {
-            printf("\033[H");
-            printf(" -|----|------          ");
-            printf("\n[-%d-][-%d-][-%d-]      \n", v, a, rand() % 9 + 1);
-            printf(" -|----|------         ");
-        }
-        system("cls");
-        printf(" -|----|----|-           ");
-        printf("\n[-%d-][-%d-][-%d-]       \n", v, a, r);
-        printf(" -|----|----|-      ");
-        showCursor();
+                 /* IRON automat */
+                 hideCursor();
+                 system("cls");
+                 for (int i = 0; i < 250; i++) {
+                     printf("\033[H");
+                     printf(" -------------      ");
+                     printf("\n[-%d-][-%d-][-%d-]            \n", rand() % 9 + 1, rand() % 9 + 1, rand() % 9 + 1);
+                     printf(" -------------        ");
+                 }
+                 for (int i = 0; i < 250; i++) {
+                     printf("\033[H");
+                     printf(" -|-----------     ");
+                     printf("\n[-%d-][-%d-][-%d-]          \n", v, rand() % 9 + 1, rand() % 9 + 1);
+                     printf(" -|-----------           ");
+                 }
+                 for (int i = 0; i < 250; i++) {
+                     printf("\033[H");
+                     printf(" -|----|------          ");
+                     printf("\n[-%d-][-%d-][-%d-]      \n", v, a, rand() % 9 + 1);
+                     printf(" -|----|------         ");
+                 }
+                 system("cls");
+                 printf(" -|----|----|-           ");
+                 printf("\n[-%d-][-%d-][-%d-]       \n", v, a, r);
+                 printf(" -|----|----|-      ");
+                 showCursor();
 
 
-        if (v == a && a == r) {
-            printf("\nJACKPOT!!!\n");
-            Sleep(1500);
-            *penize += sazka * 20;
-        } else if (v == a || a == r) {
-            printf("\nVYHRA!!!\n");
-            Sleep(1500);
-            *penize += sazka * 3;
-        }
-        else {
-            printf("\nProhral jsi.\n");
-            Sleep(1500);
-            *penize -= sazka;
-        }
-        if (*penize <= 0) {
-            system("cls");
-            printf("Dosly ti penize! Pujcil sis 100 od banky.\n");
-            *penize = 100;
-            Sleep(2000);
-        }
+                 if (v == a && a == r) {
+                     printCenter("\nJACKPOT!!!\n",2);
+                     Sleep(1500);
+                     *penize += sazka * 20;
+                 } else if (v == a || a == r) {
+                     printCenter("\nVYHRA!!!\n",2);
+                     Sleep(1500);
+                     *penize += sazka * 3;
+                 }
+                 else {
+                      printCenter("\nProhral jsi.\n",2);
+                     Sleep(1500);
+                     *penize -= sazka;
+                 }
+                 if (*penize <= 0) {
+                     system("cls");
+                     printCenter("Dosly ti penize! Pujcil sis 100 od banky.\n",2);
+                     *penize = 100;
+                     Sleep(2000);
+                 }
+             }
+                 /* GOLD automat */
+             else if (Tier==2){
+                 if (*TOKEN < 1) {
+                     system("cls");
+                      printCenter("Nemas TOKEN!\n",2);
+                     Sleep(1500);
+                     goto menuk;
+                 }
+                     hideCursor();
+                     system("cls");
+                     for (int i = 0; i < 250; i++) {
+                         printf("\t\t\t\033[H");
+                         printf(" -------------      ");
+                         printf("\n\t\t\t[-%d-][-%d-][-%d-]            \n", rand() % 9 + 1, rand() % 9 + 1, rand() % 9 + 1);
+                         printf(" -------------        ");
+                     }
+                     for (int i = 0; i < 250; i++) {
+                         printf("\t\t\t\033[H");
+                         printf(" -|-----------     ");
+                         printf("\n\t\t\t[-%d-][-%d-][-%d-]          \n", v, rand() % 9 + 1, rand() % 9 + 1);
+                         printf(" -|-----------           ");
+                     }
+                     for (int i = 0; i < 250; i++) {
+                         printf("\t\t\t\033[H");
+                         printf(" -|----|------          ");
+                         printf("\n\t\t\t[-%d-][-%d-][-%d-]      \n", v, a, rand() % 9 + 1);
+                         printf(" -|----|------         ");
+                     }
+                     system("cls");
+                     printf(" -|----|----|-           ");
+                     printf("\n\t\t\t[-%d-][-%d-][-%d-]       \n", v, a, r);
+                     printf(" -|----|----|-      ");
+                     showCursor();
 
-        printf("\nMas %d kreditu\n", *penize);
+
+
+             if (v == a && a == r) {
+                 printf("\nJACKPOT!!!\n");
+                 Sleep(1500);
+                 *penize += 10000;
+                 TOKEN -=1;
+             } else if (v == a || a == r) {
+                 printf("\nVYHRA!!!\n");
+                 Sleep(1500);
+                 *penize += 2000;
+                 TOKEN -=1;
+             }
+             else {
+                 printf("\nProhral jsi.\n");
+                 Sleep(1500);
+                 TOKEN -=1;
+             }
+             if (*penize <= 0) {
+                 system("cls");
+                 printf("Dosly ti penize! Pujcil sis 100 od banky.\n");
+                 *penize = 100;
+                 Sleep(2000);
+             }
+             else {
+                 goto menuk;
+             }
+         }
+        if (*TOKEN==0) {
+            printf("Mas %d kreditu a %d TOKENU\n",*penize,*TOKEN);
+            Sleep(1000);
+        }
+        else if (*TOKEN==1) {
+            printf("\nMas %d kreditu a %d TOKEN\n",*penize,*TOKEN);
+            Sleep(1000);
+        }
+        else if (*TOKEN>1&&*TOKEN<5) {
+            printf("\nMas %d kreditu a %d TOKENY\n",*penize,*TOKEN);
+            Sleep(1000);
+        }
+        else if (*TOKEN>4) {
+            printf("\nMas %d kreditu a %d TOKENU\n",*penize,*TOKEN);
+            Sleep(1000);
+        }
         printf("Chces hrat znovu? (1 = ano, 0 = ne): ");
         scanf("%d", &hrat);
     }
+        menuk:
 }
 
 /* funkce pro ruletu */
@@ -367,6 +428,7 @@ void blackjack(int *penize) {
     while (hrat==1){
         int dohromady=0,ddohromady=0;
         system("cls");
+        drawOutline();
         printf("VITEJ V BLACKJACKU\n");
         printf("\nMas %d kreditu\n", *penize);
         printf("Kolik chces vsadit?: ");
@@ -602,6 +664,7 @@ int gamble,menu,penize=1000,TOKEN=0;
 do{
     start:
     system("cls");
+    drawOutline();
     printCenter("VITEJ V KURIHO A KOCYHO CASINE!!!",2);
     printCenter("VYBER SI:",3);
     printCenter("AUTOMAT - 1",4);
